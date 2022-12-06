@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_160423) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_222144) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,12 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_160423) do
   end
 
   create_table "exchanges", force: :cascade do |t|
-    t.integer "status"
-    t.integer "requested_vinyl_id"
-    t.integer "user_id"
-    t.integer "offered_vinyl_id"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "requested_vinyl_id"
+    t.bigint "offered_vinyl_id"
+    t.index ["offered_vinyl_id"], name: "index_exchanges_on_offered_vinyl_id"
+    t.index ["requested_vinyl_id"], name: "index_exchanges_on_requested_vinyl_id"
+    t.index ["user_id"], name: "index_exchanges_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -99,6 +102,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_160423) do
   add_foreign_key "collection_vinyls", "collections"
   add_foreign_key "collection_vinyls", "vinyls"
   add_foreign_key "collections", "users"
+  add_foreign_key "exchanges", "collection_vinyls", column: "offered_vinyl_id"
+  add_foreign_key "exchanges", "collection_vinyls", column: "requested_vinyl_id"
+  add_foreign_key "exchanges", "users"
   add_foreign_key "vinyls", "artists"
   add_foreign_key "vinyls", "genres"
   add_foreign_key "wishlists", "users"
