@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :collections_vinyls, only: [:destroy]
   resources :wishlists, only: [:destroy]
-  get "my-exchanges", to: "exchanges#index"
+  get "my-exchanges", to: "my_exchanges#index"
   patch "exchanges/:id/status", to: "exchanges#update_status"
   patch "exchanges/:id/offered_vinyl", to: "exchanges#update_offered_vinyl"
 end

@@ -10,6 +10,12 @@ class ExchangesController < ApplicationController
     end
   end
 
+  def update_status
+  end
+
+  def update_offered_viny
+  end
+
   private
 
   def vinyl_params
