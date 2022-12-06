@@ -1,0 +1,2 @@
+class MyExchange < ApplicationRecord
+end

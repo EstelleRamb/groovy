@@ -10,9 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_203513) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_160423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "collection_vinyls", force: :cascade do |t|
+    t.bigint "vinyl_id", null: false
+    t.bigint "collection_id", null: false
+    t.boolean "offer_for_trade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_collection_vinyls_on_collection_id"
+    t.index ["vinyl_id"], name: "index_collection_vinyls_on_vinyl_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_collections_on_user_id"
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.integer "status"
+    t.integer "requested_vinyl_id"
+    t.integer "user_id"
+    t.integer "offered_vinyl_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "my_exchanges", force: :cascade do |t|
+    t.integer "status"
+    t.integer "requested_vinyl_id"
+    t.integer "user_id"
+    t.integer "offered_vinyl_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +75,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_203513) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vinyls", force: :cascade do |t|
+    t.string "title"
+    t.integer "year"
+    t.text "photo_url"
+    t.bigint "artist_id", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_vinyls_on_artist_id"
+    t.index ["genre_id"], name: "index_vinyls_on_genre_id"
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.bigint "vinyl_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
+    t.index ["vinyl_id"], name: "index_wishlists_on_vinyl_id"
+  end
+
+  add_foreign_key "collection_vinyls", "collections"
+  add_foreign_key "collection_vinyls", "vinyls"
+  add_foreign_key "collections", "users"
+  add_foreign_key "vinyls", "artists"
+  add_foreign_key "vinyls", "genres"
+  add_foreign_key "wishlists", "users"
+  add_foreign_key "wishlists", "vinyls"
 end
