@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users do
+  devise_for :users
     resources :exchanges, only: [:create]
 
     root to: "pages#home"
@@ -13,4 +13,3 @@ Rails.application.routes.draw do
     patch "exchanges/:id/status", to: "exchanges#update_status"
     patch "exchanges/:id/offered_vinyl", to: "exchanges#update_offered_vinyl"
   end
-end
