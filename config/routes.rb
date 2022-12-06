@@ -7,12 +7,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :vinyls, only: [:index, :show],
+  resources :vinyls, only: [:index, :show]
   resources :collections, only: [:new, :create, :show] do
     resources :collections_vinyls, only: [:create]
   end
-  resources :collections_vinyls, only: [:destroy],
-  resources :wishlists, only: [:destroy],
+  resources :collections_vinyls, only: [:destroy]
+  resources :wishlists, only: [:destroy]
   get "my-exchanges",  to:"exchanges#index"
   patch "exchanges/:id/status", to: "exchanges#update_status"
   patch "exchanges/:id/offered_vinyl", to: "exchanges#update_offered_vinyl"
