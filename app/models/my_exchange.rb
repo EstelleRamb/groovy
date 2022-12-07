@@ -1,2 +1,0 @@
-class MyExchange < ApplicationRecord
-end
