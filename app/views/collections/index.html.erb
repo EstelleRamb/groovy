@@ -1,3 +1,12 @@
-<h1>index collection</h1>
+<h1>My collections</h1>
 
+<div class="cards">
+<% @collections.each do |collection| %>
+    <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(collection.photo.key) if collection.photo.attached? %>)">
+    <a><%= link_to collection.name, collection %>
+
+    </div>
+  <% end %>
+</div>
 <%= link_to "New collection", new_collection_path %>
+<%= link_to "Return", root_path %>
