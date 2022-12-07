@@ -10,6 +10,20 @@ class VinylsController < ApplicationController
 
   def show
     @vinyl = Vinyl.find(params[:id])
+    collections_vinyls = CollectionVinyl.where(vinyl: @vinyl)
+    collections = collections_vinyls.map do |collection_vinyl|
+      collection_vinyl.collection
+    end
+    users = collections.map do |collection|
+      collection.user
+    end
+    @markers = users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
+    raise
   end
 
   private
