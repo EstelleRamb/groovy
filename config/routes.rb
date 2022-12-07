@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :exchanges, only: [:create]
   root to: "pages#home"
   resources :vinyls, only: [:index, :show]
-  resources :collections, only: [:new, :create, :show] do
+  resources :collections, only: [:new, :create, :show, :index] do
     resources :collections_vinyls, only: [:create]
   end
 
