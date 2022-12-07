@@ -5,9 +5,13 @@ class Vinyl < ApplicationRecord
   validates :year, presence: true, numericality: { only_integer: true }
 
   include PgSearch::Model
-  pg_search_scope :search_by_artist_and_title,
-    against: [ :title, :year ],
+  pg_search_scope :search_by_title_and_year,
+    against: [ :title, :year],
+    associated_against: {
+      artist: [:name]
+    },
     using: {
       tsearch: { prefix: true }
+
     }
 end

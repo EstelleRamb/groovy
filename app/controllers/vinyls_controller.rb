@@ -2,7 +2,7 @@ class VinylsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
     if params[:query].present?
-      @vinyls = Vinyl.search_by_artist_and_title(params[:query])
+      @vinyls = Vinyl.search_by_title_and_year(params[:query])
     else
       @vinyls = Vinyl.all
     end
