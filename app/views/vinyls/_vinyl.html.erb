@@ -1,0 +1,19 @@
+
+<div>
+<strong>Title:</strong>
+<%= vinyl.title %>
+<p>
+    <strong>Year:</strong>
+    <%= vinyl.year %>
+</p>
+<p>
+    <strong>Artist:</strong>
+    <%= vinyl.artist.name %>
+</p>
+<p>
+    <strong>Genre:</strong>
+    <%= vinyl.genre.name%> 
+</p>
+</div>
+
+ <%= link_to "details", vinyl, class:"btn btn-primary" %>
