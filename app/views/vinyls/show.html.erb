@@ -1,2 +1,15 @@
-<h1>Hello</h1>
- <%= link_to 'accueil', root_path, class: "btn btn-primary" %>
+<h1>Vinyl</h1>
+
+    <div>
+      <h2><%= @vinyl.title %></h2>
+      <p><strong>Year</strong></p>
+      <p><%= @vinyl.year %></p>
+      <p><strong>Artist</strong></p>
+      <p><%= @vinyl.artist.name %></p>
+      <p><strong>Genre</strong></p>
+      <p><%= @vinyl.genre.name %></p>      
+    </div>
+
+
+<%= link_to 'Back', vinyls_path, class: "btn btn-primary" %>
+ <%= link_to 'Home', root_path, class: "btn btn-primary" %>
