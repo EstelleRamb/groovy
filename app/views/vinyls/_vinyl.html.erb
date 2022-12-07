@@ -14,8 +14,9 @@
     <strong>Genre:</strong>
     <%= vinyl.genre.name%>
 </p>
-
-    <%= vinyl.photo_url%>
+<p>
+     <%=image_tag(vinyl.photo_url)%>
+</p>
 </div>
 
  <%= link_to "details", vinyl, class:"btn btn-primary" %>
