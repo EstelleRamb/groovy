@@ -1,4 +1,7 @@
 class ExchangesController < ApplicationController
+  def index
+
+  end
   def create
     @vinyl = Vinyl.new(vinyl_params)
     @collection_vinyl = Collection_vinyl.find(params[:collection_vinyl_id])
