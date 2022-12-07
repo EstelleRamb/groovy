@@ -1,19 +1,20 @@
-<h1>🎵Groovy🎵</h1>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://globalnews.ca/wp-content/uploads/2019/05/turntable.jpg?quality=85&strip=all);">
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dvw6upciw/image/upload/v1670444848/adrian-korte-5gn2soeAc40-unsplash_sz9jt7.jpg);">
   <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+    <h1>Groovy</h1>
+    <p>Votre collection sur mesure.</p>
+    <div class="simple_form search">
+      <%= form_with url: vinyls_path, method: :get, class: "d-flex search-form-control form-group" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control string required",
+          placeholder: "Find a vinyl"
+        %>
+
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+
+      <% end %>
+    </div>
   </div>
 </div>
-
-
-<%= form_with url: vinyls_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a vinyl"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
