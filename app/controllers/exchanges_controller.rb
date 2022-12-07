@@ -1,4 +1,7 @@
 class ExchangesController < ApplicationController
+  def index
+  end
+
   def create
     @vinyl = Vinyl.new(vinyl_params)
     @collection_vinyl = Collection_vinyl.find(params[:collection_vinyl_id])
@@ -8,6 +11,12 @@ class ExchangesController < ApplicationController
     else
       render '/', status: :unprocessable_entity
     end
+  end
+
+  def update_status
+  end
+
+  def update_offered_viny
   end
 
   private
