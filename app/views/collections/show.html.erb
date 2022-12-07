@@ -1,4 +1,7 @@
 <h1>show collection</h1>
 
 <%= cl_image_tag @collection.photo.key, height: 300, width: 400, crop: :fill %>
+<p>list de Vinyl</p>
+
+<%# # Afficher le vinyl de la collection  %>
  <a><%= link_to "retour", collections_path, class:"btn btn-dark"%></a>

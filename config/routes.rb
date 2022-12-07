@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :vinyls, only: [:index, :show] do
     resources :exchanges, only: [:index]
+    resources :collections_vinyls, only: [:create, :new]
   end
   resources :collections, only: [:new, :create, :show, :index] do
-    resources :collections_vinyls, only: [:create]
+    resources :collections_vinyls, only: [:create, :new]
   end
 
   resources :collections_vinyls, only: [:destroy]

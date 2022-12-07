@@ -12,8 +12,12 @@
 </p>
 <p>
     <strong>Genre:</strong>
-    <%= vinyl.genre.name%> 
+    <%= vinyl.genre.name%>
+</p>
+<p>
+     <%=image_tag(vinyl.photo_url)%>
 </p>
 </div>
 
  <%= link_to "details", vinyl, class:"btn btn-primary" %>
+ <%= link_to "add to collection",  new_vinyl_collections_vinyl_path(vinyl), class:"btn btn-primary" %>
