@@ -1,1 +1,7 @@
 <h1>index</h1>
+
+  <% @vinyls.each do|vinyl| %>
+    <%= vinyl.title %>
+    <%= vinyl.photo_url %>
+    <%= vinyl.year%>
+  <% end %>
