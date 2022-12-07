@@ -1,0 +1,8 @@
+ <h2><strong> My collection</strong></h2>
+            <%= simple_form_for(@collection_vinyl, url: vinyl_collections_vinyls_path) do |f| %>
+              <%= f.input :collection, as: :radio_buttons, collection: Collection.all.map { |collection| [collection.name, collection.id]} %>
+
+
+              <input class="btn btn-primary" type="submit" value="Soumettre">
+              <%= link_to 'Retour', vinyls_path, class: "btn btn-primary" %>
+            <% end %>
