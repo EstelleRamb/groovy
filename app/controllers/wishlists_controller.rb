@@ -9,6 +9,7 @@ class WishlistsController < ApplicationController
     #TODO rajouter méthode create dans routes.rb
     @vinyl = Vinyl.find(params[:id])
     wishlist.create(vinyl_id: @vinyl, user: current_user)
+    redirect_to collection_path
   end
 
 end
