@@ -15,7 +15,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.new(collection_params)
     @collection.user = current_user
     if @collection.save
-      redirect_to collection_path(@collection)
+      redirect_to collections_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,6 +24,6 @@ class CollectionsController < ApplicationController
   private
 
   def collection_params
-    params.require(:dream).permit(:name, :user_id)
+    params.require(:collection).permit(:name, :user_id, :photo)
   end
 end
