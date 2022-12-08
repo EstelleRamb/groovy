@@ -1,20 +1,8 @@
 
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dvw6upciw/image/upload/v1670444848/adrian-korte-5gn2soeAc40-unsplash_sz9jt7.jpg);">
   <div class="container">
     <h1>Groovy</h1>
-    <p>Votre collection sur mesure.</p>
-    <div class="simple_form search">
-      <%= form_with url: vinyls_path, method: :get, class: "d-flex search-form-control form-group" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control string required",
-          placeholder: "Trouve un vinyle"
-        %>
-
-        <%= submit_tag "Recherche", class: "btn btn-info" %>
-
-      <% end %>
-    </div>
+    <p>Votre collection de viniles sur mesure.</p>
+    <a><%= link_to "Commencer", vinyls_path, class:"btn btn-info"%></a>
   </div>
 </div>

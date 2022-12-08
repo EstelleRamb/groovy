@@ -1,2 +1,19 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  justify-content: center;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 40px;
+  font-family: 'Lobster', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  padding-bottom: 40px;
+}

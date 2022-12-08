@@ -9,6 +9,7 @@ class CollectionsVinylsController < ApplicationController
 
   def new
     @collection_vinyl = CollectionVinyl.new
+
   end
 
   def create
@@ -29,6 +30,6 @@ class CollectionsVinylsController < ApplicationController
   end
 
   def collection_vinyl_params
-    params.require(:collection_vinyl).permit(:collection_id)
+    params.require(:collection_vinyl).permit(:collection_id, :offer_for_trade)
   end
 end

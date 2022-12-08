@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   resources :collections, only: [:new, :create, :show, :index]
 
-  resources :collections_vinyls, only: [:destroy]
+  resources :collections_vinyls, only: [:destroy] do
+    resources :exchanges, only: [:new, :create]
+  end
   resources :wishlists, only: [:destroy]
   resources :chatrooms, only: :show do
     resources :messages, only: :create
@@ -19,4 +21,5 @@ Rails.application.routes.draw do
   get "my-exchanges", to: "exchanges#index"
   patch "exchanges/:id/status", to: "exchanges#update_status"
   patch "exchanges/:id/offered_vinyl", to: "exchanges#update_offered_vinyl"
+  get "vinyls-to-exchange", to: "collections#vinyls_to_exchange"
 end
