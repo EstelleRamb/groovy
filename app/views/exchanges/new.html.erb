@@ -1,0 +1,16 @@
+<%= simple_form_for(@exchange) do |v| %>
+
+<% @collections_vinyls.each do |cv| %>
+  <label>
+    <input type="checkbox" name="collection_vinyl_ids[]" value="<%= cv.id %>">
+    <%= cv.vinyl.title%>
+    <%= cv.vinyl.year %>
+    <%= image_tag cv.vinyl.photo_url %>
+  </label>
+
+<% end %>
+
+  <div class="form-actions">
+    <%= v.button :submit %>
+  </div>
+<% end %>

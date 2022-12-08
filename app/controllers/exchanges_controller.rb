@@ -3,20 +3,21 @@ class ExchangesController < ApplicationController
   end
 
   def create
-    @vinyl = Vinyl.new(vinyl_params)
-    @collection_vinyl = Collection_vinyl.find(params[:collection_vinyl_id])
-    @vinyl.collection_vinyl = @collection_vinyl
-    if @vinyl.save
-      redirect_to collection_vinyl_path(@collection_vinyl)
-    else
-      render '/', status: :unprocessable_entity
+    exchange = Exchange.new(requested_vinyl_id: params[:collections_vinyl_id], user: current_user, status: :pending)
+    exchange.save!
+    params[:collection_vinyl_ids].each do |cvid|
+      offered_vinyl = OfferedVinyl.new(exchange: exchange, collection_vinyl_id: cvid)
+      offered_vinyl.save!
     end
+    redirect_to my_exchanges_path
+  # rescue
+  #   render :new, status: :unprocessable_entity
   end
 
-  def update_status
-  end
-
-  def update_offered_viny
+  def new
+    collections = current_user.collections
+    @collections_vinyls = CollectionVinyl.where(collection: collections)
+    @exchange = Exchange.new(requested_vinyl_id: params[:collections_vinyl_id], user: current_user, status: :pending)
   end
 
   private
