@@ -10,25 +10,25 @@ class VinylsController < ApplicationController
 
   def show
     @vinyl = Vinyl.find(params[:id])
-    collections_vinyls = CollectionVinyl.where(vinyl: @vinyl)
-    collections = collections_vinyls.map do |collection_vinyl|
-      collection_vinyl.collection
-    end
-    users = collections.map do |collection|
-      collection.user
-    end
-    @markers = users.geocoded.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude
-      }
-    end
-    raise
+    @collections_vinyls = CollectionVinyl.where(vinyl: @vinyl).where(offer_for_trade: true)
+
+    # collections = collections_vinyls.map do |collection_vinyl|
+    #   collection_vinyl.collection
+    # end
+    # users = collections.map do |collection|
+    #   collection.user
+    # end
+    # @markers = users.geocoded.map do |user|
+    #   {
+    #     lat: user.latitude,
+    #     lng: user.longitude
+    #   }
+    # end
   end
 
-  private
+  # private
 
-  def vinyl_params
-    params.require(:vinyl).permit(:title, :year, :artist_id, :genre_id, :photo_url)
-  end
+  # def vinyl_params
+  #   params.require(:vinyl).permit(:title, :year, :artist_id, :genre_id, :photo_url)
+  # end
 end
