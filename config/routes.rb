@@ -8,9 +8,8 @@ Rails.application.routes.draw do
     resources :exchanges, only: [:index]
     resources :collections_vinyls, only: [:create, :new]
   end
-  resources :collections, only: [:new, :create, :show, :index] do
-    resources :collections_vinyls, only: [:create, :new]
-  end
+
+  resources :collections, only: [:new, :create, :show, :index]
 
   resources :collections_vinyls, only: [:destroy]
   resources :wishlists, only: [:destroy]

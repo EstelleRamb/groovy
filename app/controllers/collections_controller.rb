@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
 
   def show
     @collection = Collection.find(params[:id])
-    # @collection_vinyl = CollectionVinyl.where(collection_id: @collection.id)
+    # @collection_vinyl = CollectionVinyl.where(collection_id: @collection)
   end
 
   def new

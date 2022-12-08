@@ -92,6 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_171649) do
     t.index ["exchange_id"], name: "index_offered_vinyls_on_exchange_id"
   end
 
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
