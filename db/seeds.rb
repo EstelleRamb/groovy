@@ -18,7 +18,8 @@ users = %w[yuhecny edgar concorde estelle]
 users.each do |user|
   User.create!(
     email: "#{user}@gmail.com",
-    password: "123456"
+    password: "123456",
+    address: "5333 casgrain"
   )
 end
 
@@ -53,6 +54,11 @@ end
 
 # user = User.create!(email: "concorde@gmail.com", password: "123456")
 # artist = Artist.create!(name: "Wonder Woman 1984", description: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s")
-# Collection.create!(name: "The Shawshank Redemption", user: user)
 # genre = Genre.create!(name: "Titanic")
 # Vinyl.create!(title: "Ocean's Eight", photo_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", year: 2001, artist:artist, genre:genre)
+
+my_collection = Collection.create!(name: "The Shawshank Redemption", user: User.find_by(email: "concorde@gmail.com"))
+CollectionVinyl.create!(vinyl: Vinyl.find_by(title: "Special Sampler"), collection: my_collection,  offer_for_trade: true )
+
+my_collection1 = Collection.create!(name: "Christophe Bartell", user: User.find_by(email: "edgar@gmail.com"))
+CollectionVinyl.create!(vinyl: Vinyl.find_by(title: "Step By Step / Vision Of Love"), collection: my_collection1, offer_for_trade: true )

@@ -1,15 +1,26 @@
 <h1>Vinyl</h1>
 
-    <div>
-      <h2><%= @vinyl.title %></h2>
-      <p><strong>Year</strong></p>
-      <p><%= @vinyl.year %></p>
-      <p><strong>Artist</strong></p>
-      <p><%= @vinyl.artist.name %></p>
-      <p><strong>Genre</strong></p>
-      <p><%= @vinyl.genre.name %></p>      
-    </div>
+  <div>
+    <h2><%= @vinyl.title %></h2>
+    <%=image_tag(@vinyl.photo_url)%>
+    <strong>Year:</strong>
+    <%= @vinyl.year %>
+    <strong>Artist:</strong>
+    <%= @vinyl.artist.name %>
+    <strong>Genre:</strong>
+    <%= @vinyl.genre.name %>
+  </div>
+  <div style="width: 100%; height: 300px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['pk.eyJ1IjoibnplY29uY28iLCJhIjoiY2xhbGZmNXgzMDRudjNwbWowbGhtcnlsOCJ9.DlEOBfNSIQjB3gsPSxkvZw'] %>">
+  </div>
 
+  <ul>
+    <% @collections_vinyls.each do |collection| %>
+    <%= collection.user.email %>
+    <% end %>
+  </ul>
 
 <%= link_to 'Back', vinyls_path, class: "btn btn-primary" %>
- <%= link_to 'Home', root_path, class: "btn btn-primary" %>
+<%= link_to 'Home', root_path, class: "btn btn-primary" %>
