@@ -4,7 +4,8 @@ class VinylsController < ApplicationController
     if params[:query].present?
       @vinyls = Vinyl.search_by_title_and_year(params[:query])
     else
-      @vinyls = Vinyl.all
+      # page d'accueil vide
+      @vinyls = []
     end
   end
 
