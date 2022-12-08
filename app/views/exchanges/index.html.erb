@@ -1,2 +1,5 @@
 <h1>vynils exchanges</h1>
-<p>yes</p>
+
+  <% @collections_vinyls.each do |collection| %>
+    <%= collection.user.email %>
+  <% end %>
