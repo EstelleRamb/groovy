@@ -1,6 +1,7 @@
  <h2><strong> My collection</strong></h2>
 <%= simple_form_for([@vinyl, @collection_vinyl], url: vinyl_collections_vinyls_path) do |f| %>
   <%= f.association :collection, as: :radio_buttons, collection: current_user.collections %>
+  <%= f.input :offer_for_trade, label: "Tu veux l'echanger?"%>
   <%= f.submit class: "btn btn-primary" %>
 
   <%# <input class="btn btn-primary" type="submit" value="Soumettre"> %>

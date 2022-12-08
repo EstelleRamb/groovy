@@ -1,6 +1,7 @@
 class CollectionsController < ApplicationController
   def index
     @collections = Collection.all
+    @vinyls_to_exchange = CollectionVinyl.user_to_exchange(current_user)
   end
 
   def show

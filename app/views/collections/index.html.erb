@@ -1,21 +1,28 @@
-<h1>My collections</h1>
+<h1>Mes collections</h1>
 
 <div class="cards">
 
-<div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
-  <a><%= link_to 'Wishlist'%>
- </div>
-
- <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
-  <a><%= link_to '+'%>
- </div>
-
-<% @collections.each do |collection| %>
-    <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(collection.photo.key) if collection.photo.attached? %>)">
-    <a><%= link_to collection.name, collection %>
-
+  <% if @vinyls_for_exchange %>
+    <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+      <a><%= link_to 'Pour Echanger', vinyls_to_exchange_path %>
     </div>
   <% end %>
+
+
+  <% @collections.each do |collection| %>
+      <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(collection.photo.key) if collection.photo.attached? %>)">
+      <a><%= link_to collection.name, collection %>
+
+      </div>
+    <% end %>
 </div>
 <%= link_to "New collection", new_collection_path %>
+
+<h1>Mes vinyls à échanger</h1>
+<ul>
+  <% @vinyls_to_exchange.each do |to_exchange| %>
+   <li><%= to_exchange.vinyl.title%></li>
+  <% end %>
+</ul>
+
 <%= link_to "Return", root_path %>
