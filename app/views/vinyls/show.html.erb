@@ -19,7 +19,7 @@
   <ul>
     <% @collections_vinyls.each do |collection| %>
     <%= collection.user.email %>
-    <%= link_to 'Je le veux', vinyl_exchanges_path(@vinyl), class: "btn btn-primary" %>
+    <%= link_to 'Je le veux', new_collections_vinyl_exchange_path(collection), class: "btn btn-primary" %>
     <% end %>
   </ul>
 
