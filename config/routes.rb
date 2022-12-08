@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :exchanges, only: [:new, :create]
   end
   resources :wishlists, only: [:destroy]
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
   get "my-exchanges", to: "exchanges#index"
   patch "exchanges/:id/status", to: "exchanges#update_status"
   patch "exchanges/:id/offered_vinyl", to: "exchanges#update_offered_vinyl"
