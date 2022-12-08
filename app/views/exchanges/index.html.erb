@@ -1,1 +1,8 @@
 <h1>vynils exchanges</h1>
+
+<% @exchanges.each do |exchange| %>
+
+  <%= exchange.requested_vinyl%>
+  <%# <%= exchange.vinyl.year %>
+  <%# <%= image_tag ov.vinyl.photo_url %>
+<% end %>
