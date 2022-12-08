@@ -12,4 +12,8 @@ class WishlistsController < ApplicationController
     redirect_to collection_path
   end
 
+  def show
+    @wishlist = Wishlist.find(params[:id])
+  end
+
 end
