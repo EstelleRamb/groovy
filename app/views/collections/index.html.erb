@@ -1,4 +1,6 @@
 <h1>Mes collections</h1>
+<%= link_to "Retour", vinyls_path, class: "btn btn-info" %>
+<%= link_to "Créer une nouvelle collection", new_collection_path, class: "btn btn-info"%>
 
 <div class="cards">
 
@@ -11,18 +13,19 @@
 
   <% @collections.each do |collection| %>
       <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(collection.photo.key) if collection.photo.attached? %>)">
-      <a><%= link_to collection.name, collection %>
-
+        <a><%= link_to collection.name, collection %>
       </div>
     <% end %>
 </div>
-<%= link_to "New collection", new_collection_path %>
 
-<h1>Mes vinyls à échanger</h1>
-<ul>
-  <% @vinyls_to_exchange.each do |to_exchange| %>
-   <li><%= to_exchange.vinyl.title%></li>
-  <% end %>
-</ul>
-
-<%= link_to "Return", root_path %>
+<h1>Mes vinyles à échanger</h1>
+  <div class="card" style="width: 18rem;">
+    <% @vinyls_to_exchange.each do |to_exchange| %>
+    <p> <%= image_tag (to_exchange.vinyl.photo_url), class:"card-img-top" %></p>
+    <div class="card-body">
+      <h5 class="card-title"><%= to_exchange.vinyl.title%></h5>
+      <p>(<%=to_exchange.vinyl.year%>)</p>
+      <p><%= to_exchange.vinyl.artist.name%></p>
+    </div>
+    <% end %>
+  </div>
