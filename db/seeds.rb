@@ -51,7 +51,6 @@ artists.each do |artist|
   end
 end
 
-
 # user = User.create!(email: "concorde@gmail.com", password: "123456")
 # artist = Artist.create!(name: "Wonder Woman 1984", description: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s")
 # Collection.create!(name: "The Shawshank Redemption", user: user)
