@@ -1,6 +1,6 @@
 <h1><%=@collection.name%></h1>
 
-<%= cl_image_tag @collection.photo.key, height: 300, width: 400, crop: :fill %>
+<%= cl_image_tag @collection.photo.key, height: 300, width: 400, crop: :fill %>s
 <ul>
   <% @collection.vinyls.each do |vinyl| %>
     <li>
