@@ -1,6 +1,8 @@
 class ExchangesController < ApplicationController
   def index
     @exchanges = Exchange.where(user: current_user)
+
+    # @exchange = Exchange.where(requested_vinyl_id: )
   end
 
   def create
