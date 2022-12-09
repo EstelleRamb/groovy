@@ -2,7 +2,14 @@
 
 <% @exchanges.each do |exchange| %>
 
-  <%= exchange.requested_vinyl%>
-  <%# <%= exchange.vinyl.year %>
-  <%# <%= image_tag ov.vinyl.photo_url %>
-<% end %>
+  <%= exchange.requested_vinyl.vinyl.title unless exchange.requested_vinyl.nil?%>
+  <%= exchange.requested_vinyl.vinyl.year unless exchange.requested_vinyl.nil?%>
+  <%= image_tag exchange.requested_vinyl.vinyl.photo_url unless exchange.requested_vinyl.nil?%>
+
+<%end%>
+
+<%= link_to "Valider", my_exchanges_path ,class: "btn-btn-dark" %>
+
+<%# afficher les exchanges
+validate button
+redirect path afficher un message "votre echange a ete fait avec succes" %>

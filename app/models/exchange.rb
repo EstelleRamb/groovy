@@ -11,4 +11,5 @@ class Exchange < ApplicationRecord
     Rejected: 2
 
   }
+  validates :requested_vinyl, presence: true
 end
