@@ -15,7 +15,7 @@
             <%= image_tag "https://res.cloudinary.com/dvw6upciw/image/upload/v1670444837/avatar_e5p5i5.webp", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <a class="nav-link" href="#" data-bs-toggle="dropdown"></a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Ma collection", collections_path, class: "dropdown-item" %>
+              <%= link_to "Mes collections", collections_path, class: "dropdown-item" %>
               <%= link_to "Mes échanges", my_exchanges_path, class: "dropdown-item" %>
               <%= link_to "Déconnection", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
