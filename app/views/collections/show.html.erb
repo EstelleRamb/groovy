@@ -1,12 +1,21 @@
+
+<div class= "container">
 <h1><%=@collection.name%></h1>
-<ul>
-  <% @collection.vinyls.each do |vinyl| %>
-    <li>
-      <p><%= vinyl.title %> par: <%= vinyl.artist.name %> </p>
-      <p> <%= image_tag (vinyl.photo_url) %></p>
-    </li>
-  <% end %>
-</ul>
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <% @collection.vinyls.each do |vinyl| %>
+    <div class="col">
+      <div class ="card">
+          <p class="card-img-top"> <%= image_tag (vinyl.photo_url) %></p>
+          <h4><%= vinyl.title %></h4>
+          <p>(<%= vinyl.year %>)</p>
+          <p><%= vinyl.artist.name %> </p>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+ <a><%= link_to "Retour", collections_path, class:"btn btn-info mt-3"%></a>
+</div>
+
 
 <%# # Afficher le vinyl de la collection  %>
- <a><%= link_to "Retour", collections_path, class:"btn btn-info"%></a>
