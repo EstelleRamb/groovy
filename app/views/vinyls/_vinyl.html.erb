@@ -1,23 +1,24 @@
 
-<div>
-<strong>Title:</strong>
-<%= vinyl.title %>
-<p>
-    <strong>Year:</strong>
-    <%= vinyl.year %>
-</p>
-<p>
-    <strong>Artist:</strong>
-    <%= vinyl.artist.name %>
-</p>
-<p>
-    <strong>Genre:</strong>
-    <%= vinyl.genre.name%>
-</p>
-<p>
-     <%=image_tag(vinyl.photo_url)%>
-</p>
-</div>
 
- <%= link_to "details", vinyl, class:"btn btn-info" %>
- <%= link_to "add to collection",  new_vinyl_collections_vinyl_path(vinyl), class:"btn btn-info" %>
+  <img class="card-img-top">
+      <%=image_tag(vinyl.photo_url)%>
+  <div class="text p-3">
+    <strong>Title:</strong>
+    <%= vinyl.title %>
+    <p>
+        <strong>Year:</strong>
+        <%= vinyl.year %>
+    </p>
+    <p>
+        <strong>Artist:</strong>
+        <%= vinyl.artist.name %>
+    </p>
+    <%# <p>
+        <strong>Genre:</strong>
+        <%= vinyl.genre.name%>
+    <%# </p> %>
+  </div>
+  <div>
+    <%= link_to "details", vinyl, class:"btn btn-info m-3" %>
+    <%= link_to "add to collection",  new_vinyl_collections_vinyl_path(vinyl), class:"btn btn-info text-center" %>
+  </div>
