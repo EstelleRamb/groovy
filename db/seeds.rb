@@ -20,6 +20,9 @@ puts "done"
 puts "destroy vinyl..."
 Vinyl.destroy_all
 puts "done"
+puts "destroy Message..."
+Message.destroy_all
+puts "done"
 puts "destroy user..."
 User.destroy_all
 puts "done"
