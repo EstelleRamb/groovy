@@ -11,14 +11,17 @@ class ExchangesController < ApplicationController
       offered_vinyls.save!
     end
     redirect_to my_exchanges_path
-  # rescue
-  #   render :new, status: :unprocessable_entity
+    # rescue
+    # render :new, status: :unprocessable_entity
   end
 
   def new
     collections = current_user.collections
     @collections_vinyls = CollectionVinyl.where(collection: collections)
-    @exchange = Exchange.new(requested_vinyl_id: params[:collections_vinyl_id], user: current_user, status: :pending)
+
+    @requested_vinyl = CollectionVinyl.find(params[:collections_vinyl_id])
+    # @exchange = Exchange.new(requested_vinyl_id: params[:collections_vinyl_id], user: current_user, status: :pending)
+    @exchange = Exchange.new
   end
 
   private

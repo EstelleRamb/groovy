@@ -1,15 +1,19 @@
 <h1>Vinyl</h1>
-
-  <div>
-    <h2><%= @vinyl.title %></h2>
-    <%=image_tag(@vinyl.photo_url)%>
-    <strong>Year:</strong>
-    <%= @vinyl.year %>
-    <strong>Artist:</strong>
-    <%= @vinyl.artist.name %>
-    <strong>Genre:</strong>
-    <%= @vinyl.genre.name %>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card rouded">
+      <h2><%= @vinyl.title %></h2>
+      <img class="card-img-top"><%=image_tag(@vinyl.photo_url)%>
+      <strong>Year:</strong>
+      <%= @vinyl.year %>
+      <strong>Artist:</strong>
+      <%= @vinyl.artist.name %>
+      <strong>Genre:</strong>
+      <%= @vinyl.genre.name %>
+    </div>
   </div>
+</div>
+
   <div style="width: 100%; height: 300px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
