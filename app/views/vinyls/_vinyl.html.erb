@@ -1,25 +1,26 @@
 
 
-  <img class="card-img-top">
-      <%=image_tag(vinyl.photo_url)%>
-  <div class="text p-3">
-    <strong>Title:</strong>
-    <%= vinyl.title %>
-    <p>
-        <strong>Year:</strong>
-        <%= vinyl.year %>
-    </p>
-    <p>
-        <strong>Artist:</strong>
-        <%= vinyl.artist.name %>
-    </p>
-    <%# <p>
-        <strong>Genre:</strong>
-        <%= vinyl.genre.name%>
-    <%# </p> %>
+  <%# <img class="card-img-top"> %>
+  <div class="d-flex flex-row">
+    <%=image_tag(vinyl.photo_url, :class=>"", :width=>100, :height=>100, :style=>"object-fit: cover; margin: 5px")%>
+    <div class="text p-3 flex-fill">
+      <strong>Title:</strong>
+      <%= vinyl.title %>
+      <p>
+          <strong>Year:</strong>
+          <%= vinyl.year %>
+      </p>
+      <p>
+          <strong>Artist:</strong>
+          <%= vinyl.artist.name %>
+      </p>
+      <%# <p>
+          <strong>Genre:</strong>
+          <%= vinyl.genre.name%>
+      <%# </p> %>
+    </div>
   </div>
   <div>
      <%= link_to "Détails", vinyl, class:"btn btn-info" %>
      <%= link_to "Ajouter à la collection",  new_vinyl_collections_vinyl_path(vinyl), class:"btn btn-info" %>
   </div>
-
