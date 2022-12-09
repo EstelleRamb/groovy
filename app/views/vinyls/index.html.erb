@@ -15,6 +15,15 @@
   </div>
 </div>
 
-  <% @vinyls.each do|vinyl| %>
-  <%= render vinyl %>
-<% end %>
+
+<div class= "container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @vinyls.each do|vinyl| %>
+    <div class="col">
+        <div class="card">
+        <%= render vinyl %>
+        </div>
+    </div>
+      <% end %>
+  </div>
+</div>
