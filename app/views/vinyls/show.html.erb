@@ -19,9 +19,9 @@
   <ul>
     <% @collections_vinyls.each do |collection| %>
     <%= collection.user.email %>
-    <%= link_to 'Je le veux', new_collections_vinyl_exchange_path(collection), class: "btn btn-primary" %>
+    <%= link_to 'Je le veux', new_collections_vinyl_exchange_path(collection), class: "btn btn-info" %>
     <% end %>
   </ul>
 
-<%= link_to 'Back', vinyls_path, class: "btn btn-primary" %>
-<%= link_to 'Home', root_path, class: "btn btn-primary" %>
+<%= link_to 'Back', vinyls_path, class: "btn btn-info" %>
+<%= link_to 'Home', root_path, class: "btn btn-info" %>
