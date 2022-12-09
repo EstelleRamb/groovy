@@ -6,6 +6,11 @@
   <%= exchange.requested_vinyl.vinyl.year unless exchange.requested_vinyl.nil?%>
   <%= image_tag exchange.requested_vinyl.vinyl.photo_url unless exchange.requested_vinyl.nil?%>
 
+  <% exchange.offered_vinyls.each do |exchange_offer| %>
+    <%= exchange_offer.collection_vinyl.vinyl.title unless exchange.requested_vinyl.nil?%>
+    <%= exchange_offer.collection_vinyl.vinyl.year unless exchange.requested_vinyl.nil?%>
+    <%= image_tag exchange_offer.collection_vinyl.vinyl.photo_url unless exchange.requested_vinyl.nil?%>
+  <% end %>
 <%end%>
 
 <%= link_to "Valider", my_exchanges_path ,class: "btn-btn-dark" %>
