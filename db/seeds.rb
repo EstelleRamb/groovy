@@ -5,14 +5,30 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "destroy offered_vinyl..."
 OfferedVinyl.destroy_all
+puts "done"
+puts "destroy exchanges..."
 Exchange.destroy_all
+puts "done"
+puts "destroy collectionvinyl..."
 CollectionVinyl.destroy_all
+puts "done"
+puts "destroy collection..."
 Collection.destroy_all
+puts "done"
+puts "destroy vinyl..."
 Vinyl.destroy_all
+puts "done"
+puts "destroy user..."
 User.destroy_all
+puts "done"
+puts "destroy artist..."
 Artist.destroy_all
+puts "done"
+puts "destroy genre..."
 Genre.destroy_all
+puts "all done"
 
 print "creating users..."
 users = %w[yuhecny edgar concorde estelle]
@@ -31,7 +47,7 @@ genres.map! do |genre|
   Genre.create!(name: genre)
 end
 
-artists = ["Mariah Carey", "Frank Sinatra", "Taylor Swift"]
+artists = ["Mariah Carey", "Snoop Dog", "Grand Invincible", "Ouska", "Doja Cat", "Xzibit", "Michael Jackson", "Prince", "Indochine", "Claude François", "Johnny Halliday", "Queen", "Pink Floyd", "AC/DC"]
 
 artists.each do |artist|
   artist_id = discogs.search(artist, per_page: 1, type: :artist).results.first.id
