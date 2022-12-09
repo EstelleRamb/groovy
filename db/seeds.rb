@@ -34,10 +34,11 @@ Genre.destroy_all
 puts "all done"
 
 print "creating users..."
-users = %w[yuhecny edgar concorde estelle]
+users = %w[yuhecny edgar concorde estelle michelle]
 users.each do |user|
   User.create!(
     email: "#{user}@gmail.com",
+    first_name: "Michelle",
     password: "123456",
     address: "5333 casgrain"
   )
@@ -77,10 +78,10 @@ end
 # genre = Genre.create!(name: "Titanic")
 # my_vinyl = Vinyl.create!(title: "Ocean's Eight", photo_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", year: 2001, artist:artist, genre:genre)
 
-my_collection = Collection.create!(name: "The Shawshank Redemption", user: User.find_by(email: "concorde@gmail.com"))
+my_collection = Collection.create!(name: "The Shawshank Redemption", user: User.find_by(email: "michelle@gmail.com"))
 CollectionVinyl.create!(vinyl: Vinyl.find_by(title: "Special Sampler"), collection: my_collection, offer_for_trade: true)
 CollectionVinyl.create!(vinyl: Vinyl.find_by(title: "Narm/90"), collection: my_collection, offer_for_trade: true )
 CollectionVinyl.create!(vinyl: Vinyl.find_by(title: "I Don't Wanna Cry"), collection: my_collection, offer_for_trade: true)
 
-my_collection1 = Collection.create!(name: "Christophe Bartell", user: User.find_by(email: "edgar@gmail.com"))
-CollectionVinyl.create!(vinyl: Vinyl.find_by(title: "Step By Step / Vision Of Love"), collection: my_collection1, offer_for_trade: true)
+# my_collection1 = Collection.create!(name: "Christophe Bartell", user: User.find_by(email: "edgar@gmail.com"))
+# CollectionVinyl.create!(vinyl: Vinyl.find_by(title: "Step By Step / Vision Of Love"), collection: my_collection1, offer_for_trade: true)
