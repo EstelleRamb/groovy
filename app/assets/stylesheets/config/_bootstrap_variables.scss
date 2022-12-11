@@ -16,9 +16,12 @@ $success:    $green;
 $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
+$gold-yellow: (
+  "gold-yellow": $gold-yellow
+);
 
 // Buttons & inputs' radius
-$border-radius:    2px;
+$border-radius:    15px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
