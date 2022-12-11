@@ -22,9 +22,14 @@
 
   <ul>
     <% @collections_vinyls.each do |collection| %>
-    <%= collection.user.email %>
-    <%= link_to 'Je le veux', new_collections_vinyl_exchange_path(collection), class: "btn btn-info" %>
-    <% end %>
+    <div class="card p-3">
+      <div class="d-flex justify-content-between ">
+        <%= image_tag "https://res.cloudinary.com/dvw6upciw/image/upload/v1670444837/avatar_e5p5i5.webp", :width=>80, :height=>80%>
+        <p><%= collection.user.email %></p>
+        <a><%= link_to 'Je le veux', new_collections_vinyl_exchange_path(collection), class: "btn btn-info" %></a>
+        <% end %>
+      </div>
+    </div>
   </ul>
 
 <%= link_to 'Return', vinyls_path, class: "btn btn-info" %>
