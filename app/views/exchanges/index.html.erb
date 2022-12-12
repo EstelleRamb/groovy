@@ -9,8 +9,8 @@
       <li>
         <div class="d-flex flex-column p-2">
           <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
-          <p><%= exchange.requested_vinyl.vinyl.title unless exchange.requested_vinyl.nil?%></p>
-          <p><%= exchange.requested_vinyl.vinyl.year unless exchange.requested_vinyl.nil?%></p>
+          <p><%= exchange.requested_vinyl.vinyl.title %></p>
+          <p><%= exchange.requested_vinyl.vinyl.year %></p>
         </div>
         <div class="d-flex flex-column p-2">
           <% exchange.offered_vinyls.each do |offered_vinyl| %>

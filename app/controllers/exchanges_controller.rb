@@ -16,12 +16,8 @@ class ExchangesController < ApplicationController
   end
 
   def new
-    # collections = current_user.collections
-    # @collections_vinyls = CollectionVinyl.where(collection: collections)
     @users_vinyls_to_offer = current_user.users_vinyls_to_exchange.includes(:vinyl)
-
     @requested_vinyl = UsersVinyl.find(params[:users_vinyl_id])
-    # @exchange = Exchange.new(requested_vinyl_id: params[:collections_vinyl_id], user: current_user, status: :pending)
     @exchange = Exchange.new
   end
 
