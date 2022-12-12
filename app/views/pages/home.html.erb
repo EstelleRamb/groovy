@@ -1,8 +1,80 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dvw6upciw/image/upload/v1670444848/adrian-korte-5gn2soeAc40-unsplash_sz9jt7.jpg);">
   <div class="container">
-    <h1>Groovy</h1>
-    <p>Votre collection de vinyles sur mesure.</p>
-    <a><%= link_to "Commencer", vinyls_path, class:"btn btn-info"%></a>
+    <h1 id="groovy">Groovy</h1>
+    <p id="intro">Votre collection de vinyles sur mesure.</p>
+    <a><%= link_to "Commencer", vinyls_path, class:"button "%></a>
+  </div>
+</div>
+
+<div class="container mt-4 mb-4">
+  <h1>Nos vinyles les plus populaires </h1>
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col">
+      <div class="card rounded mt-4">
+        <div class="card p-3">
+          <%= image_tag(@vinyl.photo_url)%>
+          <div class="text">
+            <p>
+              <% @vinyl.title %>(<%= @vinyl.year%>)
+            </p>
+            <p>
+              <%= @vinyl.artist.name %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card rounded mt-4">
+        <div class="card p-3">
+
+         <%= image_tag(@vinylTwo.photo_url)%>
+          <div class="text">
+            <p>
+              <% @vinylTwo.title %>(<%= @vinylTwo.year%>)
+            </p>
+            <p>
+              <%= @vinylTwo.artist.name %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card rounded mt-4">
+        <div class="card p-3">
+
+         <%= image_tag(@vinylThree.photo_url)%>
+          <div class="text">
+            <p>
+              <% @vinylThree.title %>(<%= @vinylThree.year%>)
+            </p>
+            <p>
+              <%= @vinylThree.artist.name %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card rounded mt-4">
+        <div class="card p-3">
+
+         <%= image_tag(@vinylFour.photo_url)%>
+          <div class="text">
+            <p>
+              <% @vinylFour.title %>(<%= @vinylFour.year%>)
+            </p>
+            <p>
+              <%= @vinylFour.artist.name %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
