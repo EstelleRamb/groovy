@@ -5,6 +5,11 @@ class ExchangesController < ApplicationController
     # @exchange = Exchange.where(requested_vinyl_id: )
   end
 
+  def show
+    @exchange = Exchange.last
+    @message = Message.new
+  end
+
   def create
     exchange = Exchange.new(requested_vinyl_id: params[:collections_vinyl_id], user: current_user, status: :pending)
     exchange.save!

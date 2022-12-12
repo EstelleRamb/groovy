@@ -5,6 +5,7 @@ class Exchange < ApplicationRecord
   has_many :offered_vinyls
   has_many :collections_vinyls, through: :offered_vinyls
   has_many :vinyls, through: :collections_vinyls
+  has_many :messages, dependent: :destroy
   enum status: {
     pending: 0,
     Confirmed: 1,
