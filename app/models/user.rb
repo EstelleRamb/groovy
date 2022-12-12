@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :vinyls_to_exchange, through: :users_vinyls_to_exchange, class_name: 'Vinyl', source: :vinyl
 
   has_many :exchanges
-
+  has_many :incoming_exchanges, through: :users_vinyls, source: :exchanges
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 end
