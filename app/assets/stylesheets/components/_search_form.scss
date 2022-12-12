@@ -4,15 +4,17 @@
 
 .search-form-control .btn {
   position: absolute;
-  top: 8px;
-  bottom: 8px;
-  right: 8px;
+  top: 7px;
+  bottom: 7px;
+  right: 7px;
 }
 
 .search-form-control .form-control {
-  height: 3.5rem;
+  height: 3.0rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 10px;
   border: 1px solid #E7E7E7;
+  background-color: transparent;
 }
 
 .search-form-control .form-control:focus {
@@ -24,4 +26,10 @@
 .search{
   padding-top: 30px;
   border-radius: 30px;
+}
+
+.btn-info {
+  border-radius: 10px;
+  padding-top: 10px;
+
 }

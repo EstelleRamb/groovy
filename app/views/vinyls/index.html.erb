@@ -2,7 +2,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dvw6upciw/image/upload/v1670444848/adrian-korte-5gn2soeAc40-unsplash_sz9jt7.jpg);">
   <div class="container">
   <h1>Trouvez votre futur vinyle...</h1>
-    <div class="simple_form search">
+    <div class="simple_form search w-50">
       <%= form_with url: vinyls_path, method: :get, class: "d-flex search-form-control form-group" do %>
         <%= text_field_tag :query,
           params[:query],
@@ -27,3 +27,5 @@
       <% end %>
   </div>
 </div>
+
+body-color
