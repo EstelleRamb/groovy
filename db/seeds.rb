@@ -41,7 +41,7 @@ users = %w[yuhecny edgar concorde estelle michelle]
 users.each do |user|
   User.create!(
     email: "#{user}@gmail.com",
-    first_name: "Michelle",
+    first_name: user,
     password: "123456",
     address: "5333 casgrain"
   )
@@ -106,10 +106,21 @@ michelle_users_vinyls = [
   UsersVinyl.create!(vinyl: Vinyl.find_by(title: "Narm/90"), user: michelle, offer_for_trade: true),
   UsersVinyl.create!(vinyl: Vinyl.find_by(title: "I Don't Wanna Cry"), user: michelle, offer_for_trade: true)
 ]
-
 michelle_users_vinyls.each do |users_vinyl|
   CollectionsVinyl.create!(collection: my_collection, users_vinyl: users_vinyl)
 end
 
+concorde = User.find_by(email: "concorde@gmail.com")
+my_collection1 = Collection.create!(name: "POP", user: concorde)
+
+concorde_users_vinyls = [
+  UsersVinyl.create!(vinyl: Vinyl.find_by(title: "Doggystyle"), user: concorde, offer_for_trade: true),
+  UsersVinyl.create!(vinyl: Vinyl.find_by(title: "Deep Cover"), user: concorde, offer_for_trade: true),
+  UsersVinyl.create!(vinyl: Vinyl.find_by(title: "At The Speed Of Life"), user: concorde, offer_for_trade: true)
+]
+
+concorde_users_vinyls.each do |users_vinyl|
+  CollectionsVinyl.create!(collection: my_collection1, users_vinyl: users_vinyl)
+end
 # my_collection1 = Collection.create!(name: "Christophe Bartell", user: User.find_by(email: "edgar@gmail.com"))
 # CollectionVinyl.create!(vinyl: Vinyl.find_by(title: "Step By Step / Vision Of Love"), collection: my_collection1, offer_for_trade: true)

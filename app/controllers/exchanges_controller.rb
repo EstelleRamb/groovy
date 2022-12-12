@@ -1,6 +1,7 @@
 class ExchangesController < ApplicationController
   def index
     @exchanges = current_user.exchanges
+    @incoming_exchanges = current_user.incoming_exchanges
   end
 
   def show

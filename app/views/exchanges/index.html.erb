@@ -1,32 +1,52 @@
 <h1 class="text-center">Echange en cours</h1>
-    <div class="d-flex justify-content-between">
+    <div class="container d-flex justify-content-between">
       <h4>Vinyle de Michelle</h4>
       <h4>Mon vinyle</h4>
     </div>
-  <div class="d-flex justify-content-between">
+    <h2>Mes demandes d'échanges</h2>
     <ul>
       <% @exchanges.each do |exchange| %>
       <li>
-        <div class="d-flex flex-column p-2">
+  <div class=" container d-flex justify-content-between">
+        <div>
           <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
           <p><%= exchange.requested_vinyl.vinyl.title %></p>
           <p><%= exchange.requested_vinyl.vinyl.year %></p>
         </div>
-        <div class="d-flex flex-column p-2">
+        <div class="d-flex justify-content-between flex-column p-2">
           <% exchange.offered_vinyls.each do |offered_vinyl| %>
           <div class="d-flex flex-column p-2">
             <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
             <p><%= offered_vinyl.users_vinyl.vinyl.title %></p>
             <p><%= offered_vinyl.users_vinyl.vinyl.year %></p>
           </div>
-          <% end %>
         </div>
+        <% end %>
       </li>
       <%end%>
     </ul>
   </div>
+<h2>Voici les échanges proposés</h2>
+  <div>
+    <ul>
+        <% @incoming_exchanges.each do |incoming_exchange| %>
+          <% incoming_exchange.offered_vinyls.each do |offered_vinyl| %>
+            <li>
+            <form action="/action_page.php">
+              <p>Veuillez selectionner un vinyl</p>
+              <input type="radio" id="html" name="fav_language" value="HTML">
+              <label for="html">
+              <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless incoming_exchange.requested_vinyl.nil?%>
+              <p><%= offered_vinyl.users_vinyl.vinyl.title %></p>
+              <p><%= offered_vinyl.users_vinyl.vinyl.year %></p>
+              </label><br>
+            </li>
+          <% end %>
+        <% end %>
+    </ul>
+  </div>
 
-<%= link_to "échange", exchange_path(:exchange_id) ,class: "btn-btn-dark" %> 
+<%= link_to "Laisser un message", exchange_path(:exchange_id) ,class: "btn btn-info mt-3" %>
 <%= link_to "Valider", my_exchanges_path , class:"btn btn-info mt-3" %>
 <%= link_to "Retour", collections_path, class:"btn btn-info mt-3"%>
 
