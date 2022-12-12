@@ -1,0 +1,23 @@
+<div class="container exchange"
+  data-controller="exchange-subscription"
+  data-exchange-subscription-exchange-id-value="<%= @exchange.id %>"
+>
+  <h1>#<%= @exchange.user.first_name %></h1>
+
+  <div class="messages" data-exchange-subscription-target="messages">
+    <% @exchange.messages.each do |message| %>
+    <%= render "messages/message", message: message %>
+  <% end %>
+  </div>
+
+  <%= simple_form_for [@exchange, @message],
+    html: {data: {action: "turbo:submit-end->exchange-subscription#resetForm"}, class: "d-flex"} do |f|
+  %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message ##{@exchange.user.first_name}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>

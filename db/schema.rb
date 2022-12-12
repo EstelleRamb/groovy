@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_12_152015) do
+
+ActiveRecord::Schema[7.0].define(version: 2022_12_12_044754) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_152015) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "exchange_id"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -90,11 +93,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_152015) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.bigint "chatroom_id", null: false
+    t.bigint "exchange_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["exchange_id"], name: "index_messages_on_exchange_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -163,7 +166,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_152015) do
   add_foreign_key "collections_vinyls", "users_vinyls"
   add_foreign_key "exchanges", "users"
   add_foreign_key "exchanges", "users_vinyls", column: "requested_vinyl_id"
-  add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "offered_vinyls", "exchanges"
   add_foreign_key "offered_vinyls", "users_vinyls"

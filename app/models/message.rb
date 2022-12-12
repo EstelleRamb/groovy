@@ -1,4 +1,4 @@
 class Message < ApplicationRecord
-  belongs_to :chatroom
+  belongs_to :exchange
   belongs_to :user
 end

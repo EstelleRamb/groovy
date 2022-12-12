@@ -3,6 +3,11 @@ class ExchangesController < ApplicationController
     @exchanges = current_user.exchanges
   end
 
+  def show
+    @exchange = Exchange.last
+    @message = Message.new
+  end
+
   def create
     exchange = Exchange.new(requested_vinyl_id: params[:users_vinyl_id], user: current_user, status: :pending)
     exchange.save!
