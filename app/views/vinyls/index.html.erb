@@ -6,10 +6,10 @@
       <%= form_with url: vinyls_path, method: :get, class: "d-flex search-form-control form-group" do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control string required",
+          class: "form-control string required ",
           placeholder: "Recherche un vinyle..."
         %>
-        <%= submit_tag "Soumettre", class:"button " %>
+        <%= submit_tag "Soumettre", class:"button" %>
       <% end %>
     </div>
   </div>
