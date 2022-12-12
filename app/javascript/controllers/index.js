@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ChangeColorCardController from "./change_color_card_controller"
+application.register("change-color-card", ChangeColorCardController)
+
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
@@ -15,3 +18,6 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import UserVinylController from "./user_vinyl_controller"
+application.register("user-vinyl", UserVinylController)
