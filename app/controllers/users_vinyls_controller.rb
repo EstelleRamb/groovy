@@ -18,4 +18,14 @@ class UsersVinylsController < ApplicationController
     @users_vinyl = UserVinyl.new
   end
 
+  def update
+    @users_vinyl = UsersVinyl.find(params[:id])
+    @users_vinyl.update(users_vinyl_params)
+  end
+
+  private
+
+  def users_vinyl_params
+    params.require(:users_vinyl).permit(:offer_for_trade)
+  end
 end
