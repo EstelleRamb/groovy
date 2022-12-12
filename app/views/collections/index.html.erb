@@ -31,7 +31,7 @@
           <a><%= link_to collection.name, collection %>
         </div>
       <% end %>
-  <%= link_to "Créer une nouvelle collection", new_collection_path, class: "buton-add m-3"%>
+  <%= link_to "+", new_collection_path, class: "buton-add m-3"%>
   </div>
 </div>
 
@@ -43,9 +43,10 @@
   <div class="row row-cols-1 row-cols-md-4 g-4">
     <% @users_vinyls.each do |user_vinyl|%>
       <div class="col">
-        <div class="card shadow p-3 rounded mt-4">
+        <div class="card shadow">
           <div>
-            <p><%= image_tag (user_vinyl.vinyl.photo_url), class:"vinyl-image card-img-top"%></p>
+            <p><%= image_tag (user_vinyl.vinyl.photo_url), class:"vinyl_image m-4", style:"object-fit: cover; margin: 5px"%></p>
+            <%= link_to "+"%>
           </div>
           <div class="text p-4 flex-fill">
             <p><strong>
