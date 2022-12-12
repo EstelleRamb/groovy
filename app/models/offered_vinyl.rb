@@ -1,4 +1,4 @@
 class OfferedVinyl < ApplicationRecord
   belongs_to :exchange
-  belongs_to :collection_vinyl
+  belongs_to :users_vinyl
 end

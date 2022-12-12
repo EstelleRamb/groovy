@@ -1,15 +1,13 @@
 class ExchangesController < ApplicationController
   def index
-    @exchanges = Exchange.where(user: current_user)
-
-    # @exchange = Exchange.where(requested_vinyl_id: )
+    @exchanges = current_user.exchanges
   end
 
   def create
-    exchange = Exchange.new(requested_vinyl_id: params[:collections_vinyl_id], user: current_user, status: :pending)
+    exchange = Exchange.new(requested_vinyl_id: params[:users_vinyl_id], user: current_user, status: :pending)
     exchange.save!
     params[:collection_vinyl_ids].each do |cvid|
-      offered_vinyls = OfferedVinyl.new(exchange: exchange, collection_vinyl_id: cvid)
+      offered_vinyls = OfferedVinyl.new(exchange: exchange, users_vinyl_id: cvid)
       offered_vinyls.save!
     end
     redirect_to my_exchanges_path
@@ -18,11 +16,8 @@ class ExchangesController < ApplicationController
   end
 
   def new
-    collections = current_user.collections
-    @collections_vinyls = CollectionVinyl.where(collection: collections)
-
-    @requested_vinyl = CollectionVinyl.find(params[:collections_vinyl_id])
-    # @exchange = Exchange.new(requested_vinyl_id: params[:collections_vinyl_id], user: current_user, status: :pending)
+    @users_vinyls_to_offer = current_user.users_vinyls_to_exchange.includes(:vinyl)
+    @requested_vinyl = UsersVinyl.find(params[:users_vinyl_id])
     @exchange = Exchange.new
   end
 
