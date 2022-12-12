@@ -16,15 +16,16 @@ class VinylsController < ApplicationController
     # collections = collections_vinyls.map do |collection_vinyl|
     #   collection_vinyl.collection
     # end
-    # users = collections.map do |collection|
+    # users = collections_vinyls.map do |collection|
     #   collection.user
     # end
-    # @markers = users.geocoded.map do |user|
-    #   {
-    #     lat: user.latitude,
-    #     lng: user.longitude
-    #   }
-    # end
+    users = User.all
+    @markers = users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
   end
 
   # private
