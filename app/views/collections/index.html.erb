@@ -1,6 +1,11 @@
-<div class="container" style="background-color: #FAC066">
-  <h1>Mes Collections</h1>
+<div class="container">
+  <%= link_to "Retour", vinyls_path, class: "btn btn-info" %>
 </div>
+
+<div class="container" style="background-color: #FAC066">
+  <h2>Listes</h2>
+</div>
+
 
 <div class="container">
  <div class="d-flex align-items-center mt-3">
@@ -8,6 +13,7 @@
     <a><%= link_to "Retour", vinyls_path, class: "btn btn-retour " %></a>
   </div>
 </div>
+
 
 
 <div class="container">
@@ -25,9 +31,46 @@
           <a><%= link_to collection.name, collection %>
         </div>
       <% end %>
+  <%= link_to "Créer une nouvelle collection", new_collection_path, class: "buton-add m-3"%>
   </div>
-  <%= link_to "Créer une nouvelle collection", new_collection_path, class: "btn btn-info"%>
 </div>
+
+
+<div class="container" style="background-color: #FAC066">
+  <h2>Tous mes vinyles</h2>
+</div>
+<div  class= "container mt-4 mb-4">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <% @users_vinyls.each do |user_vinyl|%>
+      <div class="col">
+        <div class="card shadow p-3 rounded mt-4">
+          <div>
+            <p><%= image_tag (user_vinyl.vinyl.photo_url), class:"vinyl-image card-img-top"%></p>
+          </div>
+          <div class="text p-4 flex-fill">
+            <p><strong>
+            <%= user_vinyl.vinyl.title %>(<%= user_vinyl.vinyl.year %>)
+            </strong></p>
+            <p>
+            <%= user_vinyl.vinyl.artist.name %>
+            </p>
+            <div data-controller="user-vinyl">
+              <%= simple_form_for([user_vinyl.vinyl, user_vinyl], html: { data: { "user-vinyl-target": "form" } }) do |f| %>
+                <div class="switch-checkbox">
+                  <%= f.input :offer_for_trade, input_html: { id: "offer-for-trade-#{user_vinyl.id}", data: { action: "change->user-vinyl#changeOfferForTrade" } }%>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
 
 <div class="container">
   <h1>Mes vinyles à échanger</h1>
