@@ -43,6 +43,11 @@ users.each do |user|
     address: "5333 casgrain"
   )
 end
+chatroom = Chatroom.create(name: "general")
+
+puts '--------------------------------'
+puts "Chatroom #{chatroom.name} created"
+puts '--------------------------------'
 
 discogs = Discogs::Wrapper.new("Groovy", user_token: ENV["DISCOGS_TOKEN"])
 
@@ -61,7 +66,7 @@ artists.each do |artist|
     puts "No artist found for #{artist}"
   else
     artist_id = artist_results.first.id
-    puts "artist_if for #{artist} is #{artist_id}"
+    puts "artist_id for #{artist} is #{artist_id}"
     artist_data = discogs.get_artist(artist_id)
     artist = Artist.create!(
       name: artist_data.name,
