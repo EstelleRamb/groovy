@@ -1,8 +1,7 @@
 class CollectionsController < ApplicationController
   def index
-
-    @vinyls_to_exchange = CollectionVinyl.user_to_exchange(current_user)
-    @collections = Collection.where(user: current_user)
+    @vinyls_to_exchange = current_user.vinyls_to_exchange
+    @collections = current_user.collections
   end
 
   def show

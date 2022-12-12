@@ -13,10 +13,6 @@ class User < ApplicationRecord
 
   has_many :exchanges
 
-  # has_many :collections_vinyls, through: :collections
-
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-
-  # scope :vinyls_to_exchange, -> { joins(users_vinyls: :vinyls).where(offer_for_trade: true).where(users: { id: user.id })}
 end

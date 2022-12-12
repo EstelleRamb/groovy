@@ -28,10 +28,10 @@
       <% @vinyls_to_exchange.each do |to_exchange| %>
       <div class="col">
         <div class="card shadow p-3">
-          <p> <%= image_tag (to_exchange.vinyl.photo_url), class:"card-img-top rouded" %></p>
+          <p> <%= image_tag (to_exchange.photo_url), class:"card-img-top rouded" %></p>
           <div class="card-body">
-          <h5 class="card-title"><%= to_exchange.vinyl.title%>(<%=to_exchange.vinyl.year%>)</h5>
-          <p><%= to_exchange.vinyl.artist.name%></p>
+          <h5 class="card-title"><%= to_exchange.title%>(<%=to_exchange.year%>)</h5>
+          <p><%= to_exchange.artist.name%></p>
           </div>
         </div>
       </div>
