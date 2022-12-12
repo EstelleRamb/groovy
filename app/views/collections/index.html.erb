@@ -1,5 +1,18 @@
+  <h2>Tous mes vinyles</h2>
+  <ul>
+    <% @users_vinyls.each do |user_vinyl|%>
+     <li><%= image_tag (user_vinyl.vinyl.photo_url) %></li>
+     <li><%= user_vinyl.vinyl.title %></li>
+     <li><%= user_vinyl.vinyl.year %></li>
+    <% end %>
+  </ul>
+
+
+
 <div class="container" style="background-color: #FAC066">
-  <h1>Mes Collections</h1>
+
+
+  <h1>Listes</h1>
 </div>
 <%= link_to "Retour", vinyls_path, class: "btn btn-info" %>
 <div class="container">
