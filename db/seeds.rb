@@ -43,6 +43,11 @@ users.each do |user|
     address: "5333 casgrain"
   )
 end
+chatroom = Chatroom.create(name: "general")
+
+puts '--------------------------------'
+puts "Chatroom #{chatroom.name} created"
+puts '--------------------------------'
 
 discogs = Discogs::Wrapper.new("Groovy", user_token: ENV["DISCOGS_TOKEN"])
 
@@ -54,22 +59,34 @@ end
 artists = ["Mariah Carey", "Snoop Dog", "Grand Invincible", "Ouska", "Doja Cat", "Xzibit", "Michael Jackson", "Prince", "Indochine", "Claude François", "Johnny Halliday", "Queen", "Pink Floyd", "AC/DC"]
 
 artists.each do |artist|
-  artist_id = discogs.search(artist, per_page: 1, type: :artist).results.first.id
-  artist_data = discogs.get_artist(artist_id)
-  artist = Artist.create!(
-    name: artist_data.name,
-    description: artist_data.profile
-  )
-
-  artist_releases = discogs.get_artist_releases(artist_id, per_page: 5).releases
-  artist_releases.each do |artist_release|
-    Vinyl.create!(
-      title: artist_release.title,
-      year: artist_release.year,
-      photo_url: artist_release.thumb,
-      artist: artist,
-      genre: genres.sample
+  artist_results = artist_id = discogs.search(artist, per_page: 1, type: :artist).results
+  if artist_results.nil?
+    puts "API returned nil for search(#{artist_id})"
+  elsif artist_results.empty?
+    puts "No artist found for #{artist}"
+  else
+    artist_id = artist_results.first.id
+    puts "artist_id for #{artist} is #{artist_id}"
+    artist_data = discogs.get_artist(artist_id)
+    artist = Artist.create!(
+      name: artist_data.name,
+      description: artist_data.profile
     )
+
+    artist_releases = discogs.get_artist_releases(artist_id, per_page: 5).releases
+    if artist_releases.nil?
+      puts "API returned nil for get_artist_releases(#{artist_id})"
+    else
+      artist_releases.each do |artist_release|
+        Vinyl.create!(
+          title: artist_release.title,
+          year: artist_release.year,
+          photo_url: artist_release.thumb,
+          artist: artist,
+          genre: genres.sample
+        )
+      end
+    end
   end
 end
 
