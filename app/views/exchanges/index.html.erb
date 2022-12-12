@@ -4,25 +4,32 @@
       <h4>Mon vinyle</h4>
     </div>
   <div class="d-flex justify-content-between">
-    <% @exchanges.each do |exchange| %>
-    <div class="d-flex flex-column p-2">
-      <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
-      <p><%= exchange.requested_vinyl.vinyl.title unless exchange.requested_vinyl.nil?%></p>
-      <p><%= exchange.requested_vinyl.vinyl.year unless exchange.requested_vinyl.nil?%></p>
-    </div>
-    <div class="d-flex flex-column p-2">
-      <% exchange.offered_vinyls.each do |exchange_offer| %>
-      <div class="d-flex flex-column p-2">
-        <%= image_tag exchange_offer.collection_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
-        <p><%= exchange_offer.collection_vinyl.vinyl.title unless exchange.requested_vinyl.nil?%></p>
-        <p><%= exchange_offer.collection_vinyl.vinyl.year unless exchange.requested_vinyl.nil?%></p>
-      </div>
-      <% end %>
-    </div>
-    <%end%>
+    <ul>
+      <% @exchanges.each do |exchange| %>
+      <li>
+        <div class="d-flex flex-column p-2">
+          <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
+          <p><%= exchange.requested_vinyl.vinyl.title %></p>
+          <p><%= exchange.requested_vinyl.vinyl.year %></p>
+        </div>
+        <div class="d-flex flex-column p-2">
+          <% exchange.offered_vinyls.each do |offered_vinyl| %>
+          <div class="d-flex flex-column p-2">
+            <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
+            <p><%= offered_vinyl.users_vinyl.vinyl.title %></p>
+            <p><%= offered_vinyl.users_vinyl.vinyl.year %></p>
+          </div>
+          <% end %>
+        </div>
+      </li>
+      <%end%>
+    </ul>
   </div>
+
 <%= link_to "échange", exchange_path(:exchange_id) ,class: "btn-btn-dark" %> 
-<%= link_to "Valider", my_exchanges_path ,class: "btn-btn-dark" %>
+<%= link_to "Valider", my_exchanges_path , class:"btn btn-info mt-3" %>
+<%= link_to "Retour", collections_path, class:"btn btn-info mt-3"%>
+
 
 
 

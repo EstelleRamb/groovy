@@ -1,12 +1,12 @@
 <h2>Choisis le(s) vinyle(s) en échange</h2>
-<%= simple_form_for([@requested_vinyl, @exchange],url: collections_vinyl_exchanges_path ) do |v| %>
+<%= simple_form_for([@requested_vinyl, @exchange]) do |v| %>
 
-<% @collections_vinyls.each do |cv| %>
+<% @users_vinyls_to_offer.each do |users_vinyl| %>
   <label>
-    <input type="checkbox" name="collection_vinyl_ids[]" value="<%= cv.id %>">
-    <%= cv.vinyl.title%>
-    <%= cv.vinyl.year %>
-    <%= image_tag cv.vinyl.photo_url %>
+    <input type="checkbox" name="collection_vinyl_ids[]" value="<%= users_vinyl.id %>">
+    <%= users_vinyl.vinyl.title%>
+    <%= users_vinyl.vinyl.year %>
+    <%= image_tag users_vinyl.vinyl.photo_url %>
   </label>
 
 <% end %>

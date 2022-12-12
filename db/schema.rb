@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_12_12_044754) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,16 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_044754) do
     t.bigint "exchange_id"
   end
 
-  create_table "collection_vinyls", force: :cascade do |t|
-    t.bigint "vinyl_id", null: false
-    t.bigint "collection_id", null: false
-    t.boolean "offer_for_trade", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["collection_id"], name: "index_collection_vinyls_on_collection_id"
-    t.index ["vinyl_id"], name: "index_collection_vinyls_on_vinyl_id"
-  end
-
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
@@ -74,12 +66,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_044754) do
     t.index ["user_id"], name: "index_collections_on_user_id"
   end
 
-  create_table "exchanges", force: :cascade do |t|
-    t.integer "status", default: 0, null: false
+  create_table "collections_vinyls", force: :cascade do |t|
+    t.bigint "users_vinyl_id"
+    t.bigint "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.index ["collection_id"], name: "index_collections_vinyls_on_collection_id"
+    t.index ["users_vinyl_id"], name: "index_collections_vinyls_on_users_vinyl_id"
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
     t.bigint "requested_vinyl_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["requested_vinyl_id"], name: "index_exchanges_on_requested_vinyl_id"
     t.index ["user_id"], name: "index_exchanges_on_user_id"
   end
@@ -101,12 +102,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_044754) do
   end
 
   create_table "offered_vinyls", force: :cascade do |t|
-    t.bigint "exchange_id", null: false
-    t.bigint "collection_vinyl_id", null: false
+    t.bigint "exchange_id"
+    t.bigint "users_vinyl_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["collection_vinyl_id"], name: "index_offered_vinyls_on_collection_vinyl_id"
     t.index ["exchange_id"], name: "index_offered_vinyls_on_exchange_id"
+    t.index ["users_vinyl_id"], name: "index_offered_vinyls_on_users_vinyl_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -125,6 +126,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_044754) do
     t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_vinyls", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "vinyl_id"
+    t.boolean "offer_for_trade", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_users_vinyls_on_user_id"
+    t.index ["vinyl_id"], name: "index_users_vinyls_on_vinyl_id"
   end
 
   create_table "vinyls", force: :cascade do |t|
@@ -150,15 +161,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_044754) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "collection_vinyls", "collections"
-  add_foreign_key "collection_vinyls", "vinyls"
   add_foreign_key "collections", "users"
-  add_foreign_key "exchanges", "collection_vinyls", column: "requested_vinyl_id"
+  add_foreign_key "collections_vinyls", "collections"
+  add_foreign_key "collections_vinyls", "users_vinyls"
   add_foreign_key "exchanges", "users"
-  add_foreign_key "messages", "chatrooms", column: "exchange_id"
+  add_foreign_key "exchanges", "users_vinyls", column: "requested_vinyl_id"
   add_foreign_key "messages", "users"
-  add_foreign_key "offered_vinyls", "collection_vinyls"
   add_foreign_key "offered_vinyls", "exchanges"
+  add_foreign_key "offered_vinyls", "users_vinyls"
+  add_foreign_key "users_vinyls", "users"
+  add_foreign_key "users_vinyls", "vinyls"
   add_foreign_key "vinyls", "artists"
   add_foreign_key "vinyls", "genres"
   add_foreign_key "wishlists", "users"

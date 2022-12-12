@@ -11,12 +11,15 @@ Rails.application.routes.draw do
 
   resources :vinyls, only: [:index, :show] do
     resources :exchanges, only: [:index]
-    resources :collections_vinyls, only: [:create, :new]
+    resources :collections_vinyls, only: [:create, :new] # Ceci sont les anciennes routes, il faudrait prendre ceux de users_vinyls à la place
+    resources :users_vinyls, only: [:create, :new]
   end
 
   resources :collections, only: [:new, :create, :show, :index]
 
-  resources :collections_vinyls, only: [:destroy] do
+  resources :collections_vinyls, only: [:destroy]
+
+  resources :users_vinyls, only: [] do
     resources :exchanges, only: [:new, :create]
   end
 
