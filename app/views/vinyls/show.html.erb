@@ -1,17 +1,18 @@
-<div class="container mt-5">
-  <div class="card p-4 shadow" style="width: 500px;">
-    <img class="card-img-top"><%=image_tag(@vinyl.photo_url)%>
-    <h4 class="pt-3"><%= @vinyl.title %> (<%= @vinyl.year %>)</h4>
-    <p class=""><%= @vinyl.artist.name %></p>
+<div class="container d-flex justify-content-evenly, align-items-center">
+  <div class="container mt-5">
+    <div class="card p-4 shadow" style="width: 200px;">
+      <img class="card-img-top"><%=image_tag(@vinyl.photo_url)%>
+      <h4 class="pt-3"><%= @vinyl.title %> (<%= @vinyl.year %>)</h4>
+      <p class=""><%= @vinyl.artist.name %></p>
+    </div>
   </div>
-</div>
 
-  <div class="container", style="width: 200%; height: 200px;"
+  <div class="container", style="width: 200%; height: 300px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_TOKEN'] %>">
   </div>
-
+</div>
 
 <div class="container">
   <h2>Ces personnes ont ce vinyle</h2>
