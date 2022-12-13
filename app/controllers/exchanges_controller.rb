@@ -1,4 +1,6 @@
 class ExchangesController < ApplicationController
+  before_action :set_exchange, only: [:update, :complete_exchange]
+
   def index
     @exchanges = current_user.exchanges
     @incoming_exchanges = current_user.incoming_exchanges
@@ -22,8 +24,9 @@ class ExchangesController < ApplicationController
   end
 
   def update
-    @exchange = Exchange.find(params[:id])
-    if @exchange.update(exchange_params)
+    offered_vinyl = OfferedVinyl.find(exchange_params[:offered_vinyl_id]).users_vinyl
+    @exchange.offered_vinyl = offered_vinyl
+    if @exchange.save
       redirect_to my_exchanges_path
     else
       render :show, status: :unprocessable_entity
@@ -36,9 +39,32 @@ class ExchangesController < ApplicationController
     @exchange = Exchange.new
   end
 
+  def complete_exchange
+    requested_users_vinyl = @exchange.requested_vinyl
+    offered_users_vinyl = @exchange.offered_vinyl
+
+    requested_users_vinyl.destroy
+    offered_users_vinyl.destroy
+
+    UsersVinyl.create(
+      user: requested_users_vinyl.user,
+      vinyl: offered_users_vinyl.vinyl
+    )
+
+    UsersVinyl.create(
+      user: offered_users_vinyl.user,
+      vinyl: requested_users_vinyl.vinyl
+    )
+    redirect_to collections_path
+  end
+
   private
 
   def exchange_params
     params.require(:exchange).permit(:offered_vinyl_id)
+  end
+
+  def set_exchange
+    @exchange = Exchange.find(params[:id])
   end
 end

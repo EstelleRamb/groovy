@@ -7,6 +7,12 @@
   <h2>Mes demandes d'échanges</h2>
     <ul>
       <% @exchanges.each do |exchange| %>
+      <li>
+      <% unless exchange.offered_vinyl.nil? %>
+        <%= link_to complete_exchange_exchange_path(exchange), data: { turbo_method: :post } do %>
+          <button class= "btn btn-info mt-3">Valider</button>
+        <% end %>
+      <% end %>
         <div class=" container d-flex justify-content-between">
           <div>
             <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
@@ -16,9 +22,10 @@
         <div class="d-flex justify-content-between flex-column p-2">
           <% if exchange.offered_vinyl %>
               <div class="d-flex flex-column p-2">
-                <%= image_tag exchange.offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
-                <p><%= exchange.offered_vinyl.users_vinyl.vinyl.title %></p>
-                <p><%= exchange.offered_vinyl.users_vinyl.vinyl.year %></p>
+
+                <%= image_tag exchange.offered_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
+                <p><%= exchange.offered_vinyl.vinyl.title %></p>
+                <p><%= exchange.offered_vinyl.vinyl.year %></p>
               </div>
           <% else %>
             <% exchange.offered_vinyls.each do |offered_vinyl| %>
@@ -30,6 +37,7 @@
             <% end %>
           <% end %>
         </div>
+      </li>
       <%end%>
     </ul>
   </div>
