@@ -3,4 +3,6 @@ class Artist < ApplicationRecord
 
   validates :name, presence: true
   # validates :description, presence: true
+  include PgSearch::Model
+  multisearchable against: [:title]
 end

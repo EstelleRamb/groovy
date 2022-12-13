@@ -18,3 +18,6 @@ application.register("map", MapController)
 
 import UserVinylController from "./user_vinyl_controller"
 application.register("user-vinyl", UserVinylController)
+
+import OngletController from "./onglet_controller"
+application.register("onglet", OngletController)
