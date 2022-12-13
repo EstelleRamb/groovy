@@ -1,9 +1,7 @@
-<div class="dropdown">
+<div class="dropdown list-form">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
   </button>
   <ul class="dropdown-menu">
-
-
     <%= simple_form_for([user_vinyl, @collections_vinyl]) do |f| %>
       <%=f.input :collection_id, as: :radio_buttons, collection: @collections_select  %>
       <%= f.submit %>

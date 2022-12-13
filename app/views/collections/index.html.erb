@@ -1,21 +1,20 @@
 
 <div class="container">
- <div class="d-flex align-items-center mt-3">
+  <div class="d-flex align-items-center mt-3">
     <i class="fa-solid fa-arrow-left"></i>
     <a><%= link_to "Retour", vinyls_path, class: "btn btn-retour " %></a>
   </div>
 </div>
 
-<div class="container" style="background-color: #FAC066" width= cover>
-
-  <h2>Vous avez <%= @users_vinyls.count %> dans votre collection ! </h2>
+<div class="text-center p-5" style="background-color: #FAC066">
+  <h2>Vous avez <%= @users_vinyls.count %> vinyles dans votre collection </h2>
 </div>
 
 
 <div class="container">
 
-  <div class="simple_form search w-50">
-    <%= form_with url: collections_path, method: :get, class: "d-flex search-form-control form-group center" do %>
+  <div class="simple_form search w-50 mt-4 mb-4 text-center">
+    <%= form_with url: collections_path, method: :get, class: "d-flex search-form-control form-group" do %>
       <%= text_field_tag :query,
           params[:query],
           class: "form-control string required ",
@@ -36,7 +35,7 @@
                data-bs-target="#nav-home"
                type="button" role="tab"
                aria-controls="nav-home"
-               aria-selected="true">All</button>
+               aria-selected="true">Mes vinyles</button>
 
       <button data-onglet-target="playlist"
               data-action="click->onglet#playlist"
@@ -47,7 +46,7 @@
               type="button"
               role="tab"
               aria-controls="nav-profile"
-              aria-selected="false">Playlists</button>
+              aria-selected="false">Mes listes</button>
 
       <button data-onglet-target="echange"
               data-action="click->onglet#echange"
@@ -58,7 +57,7 @@
               type="button"
               role="tab"
               aria-controls="nav-contact"
-              aria-selected="false">Echanges</button>
+              aria-selected="false">Mes vinyles à échanger</button>
     </div>
   </nav>
 
@@ -68,26 +67,29 @@
       <% @users_vinyls.each do |user_vinyl|%>
         <div class="col">
           <div class="card shadow" data-onglet-target="cards">
-            <div>
-              <p><%= image_tag (user_vinyl.vinyl.photo_url), class:"vinyl_image m-4", style:"object-fit: cover; margin: 5px"%></p>
-              <%= render "list_form", user_vinyl: user_vinyl %>
-            </div>
-
-            <div class="text p-4 flex-fill">
-              <p><strong>
+              <img><%= image_tag (user_vinyl.vinyl.photo_url), class:"card-img-top p-3 "%>
+            <div class="text p-3 flex-fill">
+              <h5 class="card-title">
                 <%= user_vinyl.vinyl.title %>(<%= user_vinyl.vinyl.year %>)
-              </strong></p>
-              <p>
+              </h5>
+              <p class="description">
                 <%= user_vinyl.vinyl.artist.name %>
               </p>
-              <div data-controller="user-vinyl">
-                <%= simple_form_for([user_vinyl.vinyl, user_vinyl], html: { data: { "user-vinyl-target": "form" } }) do |f| %>
-                  <div class="switch-checkbox">
-                    <%= f.input :offer_for_trade, input_html: { id: "offer-for-trade-#{user_vinyl.id}", data: { action: "change->user-vinyl#changeOfferForTrade" } }%>
-                  </div>
-                <% end %>
+              <div class="d-flex justify-content-between align-items-center w-100">
+
+                <div data-controller="user-vinyl">
+                  <%= simple_form_for([user_vinyl.vinyl, user_vinyl], html: { data: { "user-vinyl-target": "form" } }) do |f| %>
+                    <div class="switch-checkbox">
+                      <%= f.input :offer_for_trade, label: "<span></span>".html_safe, input_html: { id: "offer-for-trade-#{user_vinyl.id}", data: { action: "change->user-vinyl#changeOfferForTrade" } }%>
+                    </div>
+                  <% end %>
+                </div>
+
+                <%= render "list_form", user_vinyl: user_vinyl %>
+
               </div>
             </div>
+
           </div>
         </div>
       <% end %>
@@ -122,10 +124,10 @@
         <% @vinyls_to_exchange.each do |to_exchange| %>
         <div class="col">
           <div data-onglet-target="echanges" class="card shadow p-3 d-none">
-            <p> <%= image_tag (to_exchange.photo_url), class:"card-img-top rouded" %></p>
+            <div><%= image_tag (to_exchange.photo_url), class:"card-img-top" %></div>
             <div class="card-body">
               <h5 class="card-title"><%= to_exchange.title%>(<%=to_exchange.year%>)</h5>
-            <p><%= to_exchange.artist.name%></p>
+              <p class="description"><%= to_exchange.artist.name%></p>
             </div>
           </div>
         </div>
