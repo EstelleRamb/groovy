@@ -1,11 +1,3 @@
-<div class="container">
-  <%= link_to "Retour", vinyls_path, class: "btn btn-info" %>
-</div>
-
-<div class="container" style="background-color: #FAC066">
-  <h2>Listes</h2>
-</div>
-
 
 <div class="container">
  <div class="d-flex align-items-center mt-3">
@@ -14,79 +6,110 @@
   </div>
 </div>
 
+<div class="container" style="background-color: #FAC066" width= cover>
+
+  <h2>Vous avez <%= @users_vinyls.count %> dans votre collection ! </h2>
+</div>
+
 
 <div class="container">
-  <div class="cards">
 
-    <% if @vinyls_for_exchange %>
-      <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
-        <a><%= link_to 'Pour Echanger', vinyls_to_exchange_path %>
-      </div>
+  <div class="simple_form search w-50">
+    <%= form_with url: collections_path, method: :get, class: "d-flex search-form-control form-group center" do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control string required ",
+          placeholder: "Recherche un vinyle..."
+          %>
+          <%= submit_tag "Soumettre", class:"button" %>
     <% end %>
-
-
-    <% @collections.each do |collection| %>
-        <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(collection.photo.key) if collection.photo.attached? %>)">
-          <a><%= link_to collection.name, collection %>
-        </div>
-      <% end %>
-  <%= link_to "+", new_collection_path, class: "buton-add m-3"%>
   </div>
-</div>
 
+<div data-controller ="onglet">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link active"
+          data-onglet-target = "all"
+          data-action="click->onglet#all"
+          aria-current="page" href="#">All</a>
+      </li>
+      <li class="nav-item">
+        <a id="btn-playlist"
+          class="nav-link"
+          data-onglet-target="playlist"
+          data-action="click->onglet#playlist"
+          href="#">Mes playlists</a>
+      </li>
+    </ul>
 
-<div class="container" style="background-color: #FAC066">
-  <h2>Tous mes vinyles</h2>
-</div>
-<div  class= "container mt-4 mb-4">
-  <div class="row row-cols-1 row-cols-md-4 g-4">
-    <% @users_vinyls.each do |user_vinyl|%>
-      <div class="col">
-        <div class="card shadow">
-          <div>
-            <p><%= image_tag (user_vinyl.vinyl.photo_url), class:"vinyl_image m-4", style:"object-fit: cover; margin: 5px"%></p>
-            <%= link_to "+"%>
-          </div>
-          <div class="text p-4 flex-fill">
-            <p><strong>
-            <%= user_vinyl.vinyl.title %>(<%= user_vinyl.vinyl.year %>)
-            </strong></p>
-            <p>
-            <%= user_vinyl.vinyl.artist.name %>
-            </p>
-            <div data-controller="user-vinyl">
-              <%= simple_form_for([user_vinyl.vinyl, user_vinyl], html: { data: { "user-vinyl-target": "form" } }) do |f| %>
-                <div class="switch-checkbox">
-                  <%= f.input :offer_for_trade, input_html: { id: "offer-for-trade-#{user_vinyl.id}", data: { action: "change->user-vinyl#changeOfferForTrade" } }%>
-                </div>
-              <% end %>
+  <div  class= "container mt-4 mb-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <% @users_vinyls.each do |user_vinyl|%>
+        <div class="col">
+          <div class="card shadow" data-onglet-target="cards">
+            <div>
+              <p><%= image_tag (user_vinyl.vinyl.photo_url), class:"vinyl_image m-4", style:"object-fit: cover; margin: 5px"%></p>
+              <%= link_to "+"%>
+            </div>
+            <div class="text p-4 flex-fill">
+              <p><strong>
+              <%= user_vinyl.vinyl.title %>(<%= user_vinyl.vinyl.year %>)
+              </strong></p>
+              <p>
+              <%= user_vinyl.vinyl.artist.name %>
+              </p>
+              <div data-controller="user-vinyl">
+                <%= simple_form_for([user_vinyl.vinyl, user_vinyl], html: { data: { "user-vinyl-target": "form" } }) do |f| %>
+                  <div class="switch-checkbox">
+                    <%= f.input :offer_for_trade, input_html: { id: "offer-for-trade-#{user_vinyl.id}", data: { action: "change->user-vinyl#changeOfferForTrade" } }%>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-
-
-
-<div class="container">
-  <h1>Mes vinyles à échanger</h1>
-  <div class= "mt-4 mb-4">
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-      <% @vinyls_to_exchange.each do |to_exchange| %>
-      <div class="col">
-        <div class="card shadow p-3">
-          <p> <%= image_tag (to_exchange.photo_url), class:"card-img-top rouded" %></p>
-          <div class="card-body">
-          <h5 class="card-title"><%= to_exchange.title%>(<%=to_exchange.year%>)</h5>
-          <p><%= to_exchange.artist.name%></p>
-          </div>
-        </div>
-      </div>
       <% end %>
     </div>
   </div>
+
+
+  <div class="container">
+    <div class="cards">
+
+      <% if @vinyls_for_exchange %>
+        <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+          <a><%= link_to 'Pour Echanger', vinyls_to_exchange_path %>
+        </div>
+      <% end %>
+
+
+      <% @collections.each do |collection| %>
+          <div data-onglet-target="collections" class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(collection.photo.key) if collection.photo.attached? %>)">
+            <a><%= link_to collection.name, collection %>
+          </div>
+        <% end %>
+    <%= link_to "+", new_collection_path, class: "buton-add m-3"%>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <h1>Mes vinyles à échanger</h1>
+    <div class= "mt-4 mb-4">
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        <% @vinyls_to_exchange.each do |to_exchange| %>
+        <div class="col">
+          <div class="card shadow p-3">
+            <p> <%= image_tag (to_exchange.photo_url), class:"card-img-top rouded" %></p>
+            <div class="card-body">
+            <h5 class="card-title"><%= to_exchange.title%>(<%=to_exchange.year%>)</h5>
+            <p><%= to_exchange.artist.name%></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 </div>
