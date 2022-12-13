@@ -1,4 +1,4 @@
-<button class="openChatBtn" class="btn btn-info mt-3" onclick="openForm()">Laisser un message"</button>
+<button class="openChatBtn" class="btn btn-info" onclick="openForm()">Laisser un message"</button>
 
 <div class="container exchange"
   data-controller="exchange-subscription"
@@ -26,8 +26,8 @@
         placeholder: "Message ##{@exchange.user.first_name}",
         wrapper_html: {class: "flex-grow-1"}
       %>
-      <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
-      <button type="button" class="btn cancel btn-primary mb-3" onclick="closeForm()"­>fermer </button>
+      <%= f.submit "Envoyer", class: "btn btn-info" %>
+      <button type="button" class="btn cancel btn btn-info" onclick="closeForm()"­>fermer </button>
     <% end %>
   </div>
 </div>
