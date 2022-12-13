@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :users_vinyls, only: [] do
     resources :exchanges, only: [:new, :create]
+    resources :collections_vinyls, only: [:create]
   end
 
   resources :wishlists, only: [:destroy]
