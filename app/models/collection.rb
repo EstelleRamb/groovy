@@ -4,5 +4,5 @@ class Collection < ApplicationRecord
   has_many :users_vinyls, through: :collections_vinyls
   has_many :vinyls, through: :users_vinyls
   has_one_attached :photo
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
 end
