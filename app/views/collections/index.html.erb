@@ -28,7 +28,7 @@
 <div data-controller ="onglet">
     <ul class="nav nav-pills">
       <li class="nav-item">
-        <a class="nav-link active"
+        <a class="nav-link active tab"
           data-onglet-target = "all"
           data-action="click->onglet#all"
           aria-current="page" href="#">All</a>
@@ -39,6 +39,13 @@
           data-onglet-target="playlist"
           data-action="click->onglet#playlist"
           href="#">Mes playlists</a>
+      </li>
+      <li class="nav-item">
+        <a id="btn-playlist"
+          class="nav-link"
+          data-onglet-target="echange"
+          data-action="click->onglet#echange"
+          href="#">Pour échanger</a>
       </li>
     </ul>
 
@@ -99,7 +106,7 @@
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <% @vinyls_to_exchange.each do |to_exchange| %>
         <div class="col">
-          <div class="card shadow p-3">
+          <div data-onglet-target="echanges" class="card shadow p-3">
             <p> <%= image_tag (to_exchange.photo_url), class:"card-img-top rouded" %></p>
             <div class="card-body">
             <h5 class="card-title"><%= to_exchange.title%>(<%=to_exchange.year%>)</h5>
