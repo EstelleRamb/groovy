@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :exchanges, only: [:show] do
+  resources :exchanges, only: [:show, :update] do
     resources :messages, only: :create
   end
 

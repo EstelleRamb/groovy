@@ -21,6 +21,15 @@ class ExchangesController < ApplicationController
     # render :new, status: :unprocessable_entity
   end
 
+  def update
+    @exchange = Exchange.find(params[:id])
+    if @exchange.update(exchange_params)
+      redirect_to my_exchanges_path
+    else
+      render :show, status: :unprocessable_entity
+    end
+  end
+
   def new
     @users_vinyls_to_offer = current_user.users_vinyls_to_exchange.includes(:vinyl)
     @requested_vinyl = UsersVinyl.find(params[:users_vinyl_id])
@@ -29,7 +38,7 @@ class ExchangesController < ApplicationController
 
   private
 
-  def vinyl_params
-    params.require(:vinyl).permit(:status, :requested_vinyl_id, :user_id, :offered_vinyl_id)
+  def exchange_params
+    params.require(:exchange).permit(:offered_vinyl_id)
   end
 end
