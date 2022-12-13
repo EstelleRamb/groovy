@@ -1,65 +1,77 @@
 <h1 class="text-center">Echange en cours</h1>
-
+    <%= link_to "Retour", collections_path, class: "btn btn-info mt-3"%>
     <div class="container d-flex justify-content-between">
-
- <div class="d-flex align-items-center mt-3">
-    <i class="fa-solid fa-arrow-left"></i>
-    <a><%= link_to "Retour", collections_path, class:"btn btn-retour"%></a>
-  </div>
-    <div class="d-flex justify-content-between">
-
       <h4>Vinyle de Michelle</h4>
       <h4>Mon vinyle</h4>
     </div>
-    <h2>Mes demandes d'échanges</h2>
+  <h2>Mes demandes d'échanges</h2>
     <ul>
       <% @exchanges.each do |exchange| %>
-      <li>
-  <div class=" container d-flex justify-content-between">
-        <div>
-          <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
-          <p><%= exchange.requested_vinyl.vinyl.title %></p>
-          <p><%= exchange.requested_vinyl.vinyl.year %></p>
-        </div>
-        <div class="d-flex justify-content-between flex-column p-2">
-          <% exchange.offered_vinyls.each do |offered_vinyl| %>
-          <div class="d-flex flex-column p-2">
-            <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
-            <p><%= offered_vinyl.users_vinyl.vinyl.title %></p>
-            <p><%= offered_vinyl.users_vinyl.vinyl.year %></p>
+        <div class=" container d-flex justify-content-between">
+          <div>
+            <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
+            <p><%= exchange.requested_vinyl.vinyl.title %></p>
+            <p><%= exchange.requested_vinyl.vinyl.year %></p>
           </div>
+        <div class="d-flex justify-content-between flex-column p-2">
+          <% if exchange.offered_vinyl %>
+              <div class="d-flex flex-column p-2">
+                <%= image_tag exchange.offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
+                <p><%= exchange.offered_vinyl.users_vinyl.vinyl.title %></p>
+                <p><%= exchange.offered_vinyl.users_vinyl.vinyl.year %></p>
+              </div>
+          <% else %>
+            <% exchange.offered_vinyls.each do |offered_vinyl| %>
+              <div class="d-flex flex-column p-2">
+                <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
+                <p><%= offered_vinyl.users_vinyl.vinyl.title %></p>
+                <p><%= offered_vinyl.users_vinyl.vinyl.year %></p>
+              </div>
+            <% end %>
+          <% end %>
         </div>
-        <% end %>
-      </li>
       <%end%>
     </ul>
   </div>
-<h2>Voici les échanges proposés</h2>
-  <div>
-    <ul>
-        <% @incoming_exchanges.each do |incoming_exchange| %>
-          <% incoming_exchange.offered_vinyls.each do |offered_vinyl| %>
-            <li>
-            <form action="/action_page.php">
-              <p>Veuillez selectionner un vinyl</p>
-              <input type="radio" id="html" name="fav_language" value="HTML">
-              <label for="html">
-              <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless incoming_exchange.requested_vinyl.nil?%>
-              <p><%= offered_vinyl.users_vinyl.vinyl.title %></p>
-              <p><%= offered_vinyl.users_vinyl.vinyl.year %></p>
-              </label><br>
-            </li>
-          <% end %>
-        <% end %>
-    </ul>
+
+  <h2>Voici les échanges proposés</h2>
+  <% @incoming_exchanges.each do |incoming_exchange| %>
+    <%= simple_form_for(incoming_exchange, data: { turbolinks: false }) do |f| %>
+      <p>Veuillez selectionner un vinyl</p>
+      <%= f.association :offered_vinyl, as: :radio_buttons, collection: incoming_exchange.offered_vinyls, label_method: lambda { |offered_vinyl| "
+        #{image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless incoming_exchange.requested_vinyl.nil?}
+        <p>#{offered_vinyl.users_vinyl.vinyl.title}</p>
+        <p>#{offered_vinyl.users_vinyl.vinyl.year}</p>
+        ".html_safe } %>
+      <%= f.submit "Valider", class:"btn btn-info mt-3" %>
+    <% end %>
+  <% end %>
+
+  <%= link_to "Laisser un message", exchange_path(:exchange_id) ,class: "btn btn-info mt-3" %>
+   <button type ="submit" class= "btn btn-info mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Valider</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-body" id="exampleModalLabel">Un nouveau vinyle vient d'entrer dans ta collection</h5>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info mt-3" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
+</div>
+   <script>
+var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
 
-<%= link_to "Laisser un message", exchange_path(:exchange_id) ,class: "btn btn-info mt-3" %>
-
-<%= link_to "Valider", my_exchanges_path , class:"btn btn-info mt-3" %>
-
-
-
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
+  </script>
 
 
 <%# afficher les exchanges
