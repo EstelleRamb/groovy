@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :exchanges, only: [:show] do
+  resources :exchanges, only: [:show, :update] do
     resources :messages, only: :create
   end
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :users_vinyls, only: [] do
     resources :exchanges, only: [:new, :create]
+    resources :collections_vinyls, only: [:create]
   end
 
   resources :wishlists, only: [:destroy]

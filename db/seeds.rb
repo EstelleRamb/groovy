@@ -5,11 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "destroy exchanges..."
+Exchange.update_all(offered_vinyl_id: nil)
+Exchange.destroy_all
+puts "done"
 puts "destroy offered_vinyl..."
 OfferedVinyl.destroy_all
-puts "done"
-puts "destroy exchanges..."
-Exchange.destroy_all
 puts "done"
 puts "destroy collectionvinyl..."
 CollectionsVinyl.destroy_all
