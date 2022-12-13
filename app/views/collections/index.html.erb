@@ -35,6 +35,17 @@
 </div>
 
 
+<div class="simple_form search w-50">
+      <%= form_with url: collections_path, method: :get, class: "d-flex search-form-control form-group" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control string required ",
+          placeholder: "Recherche un vinyle..."
+        %>
+        <%= submit_tag "Soumettre", class:"button" %>
+      <% end %>
+    </div>
+
 <div class="container" style="background-color: #FAC066">
   <h2>Tous mes vinyles</h2>
 </div>

@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import ChangeColorCardController from "./change_color_card_controller"
-application.register("change-color-card", ChangeColorCardController)
-
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
