@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :exchanges, only: [:show, :update] do
     resources :messages, only: :create
+    member do
+      post :complete_exchange
+    end
   end
 
   resources :vinyls, only: [:index, :show] do

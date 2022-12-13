@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_170159) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_12_13_215455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -176,8 +173,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_170159) do
   add_foreign_key "collections", "users"
   add_foreign_key "collections_vinyls", "collections"
   add_foreign_key "collections_vinyls", "users_vinyls"
-  add_foreign_key "exchanges", "offered_vinyls"
   add_foreign_key "exchanges", "users"
+  add_foreign_key "exchanges", "users_vinyls", column: "offered_vinyl_id"
   add_foreign_key "exchanges", "users_vinyls", column: "requested_vinyl_id"
   add_foreign_key "messages", "chatrooms", column: "exchange_id"
   add_foreign_key "messages", "users"
