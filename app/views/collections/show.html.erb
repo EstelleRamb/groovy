@@ -4,11 +4,12 @@
   <div class="row row-cols-1 row-cols-md-4 g-4">
     <% @collection.vinyls.each do |vinyl| %>
     <div class="col">
-      <div class ="card">
-          <p class="card-img-top"> <%= image_tag (vinyl.photo_url) %></p>
-          <h4><%= vinyl.title %></h4>
-          <p>(<%= vinyl.year %>)</p>
-          <p><%= vinyl.artist.name %> </p>
+      <div class ="card shadow">
+        <img><%= image_tag (vinyl.photo_url), class:"card-img-top p-3" %>
+        <div class="text p-3 flex-fill">
+          <h5 class="card-title"><%= vinyl.title %>(<%= vinyl.year %>)</h5>
+          <p class="description"><%= vinyl.artist.name %> </p>
+        </div>
       </div>
     </div>
     <% end %>

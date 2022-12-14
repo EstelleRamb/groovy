@@ -1,13 +1,18 @@
+<div class="d-flex align-items-center mt-3 container">
+  <i class="fa-solid fa-arrow-left"></i>
+  <a><%= link_to "Retour", vinyls_path, class: "btn btn-retour " %></a>
+</div>
+
 <div class="container d-flex justify-content-evenly, align-items-center">
-  <div class="container mt-5">
-    <div class="card p-4 shadow" style="width: 200px;">
+  <div class="container mt-5 mb-5">
+    <div class="card p-4 shadow" style="width: 400px;">
       <img class="card-img-top"><%=image_tag(@vinyl.photo_url)%>
       <h4 class="pt-3"><%= @vinyl.title %> (<%= @vinyl.year %>)</h4>
       <p class=""><%= @vinyl.artist.name %></p>
     </div>
   </div>
 
-  <div class="container", style="width: 200%; height: 300px;"
+  <div class="container", style="width: 200%; height: 480px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_TOKEN'] %>">
@@ -15,17 +20,18 @@
 </div>
 
 <div class="container">
-  <h2>Ces personnes ont ce vinyle</h2>
-  <% @users_vinyls.each do |users_vinyl| %>
-    <div class="card p-3 ms-3 d-flex justify-content-between card-user">
-      <%= image_tag "https://res.cloudinary.com/dvw6upciw/image/upload/v1670444837/avatar_e5p5i5.webp", :width=>80, :height=>80%>
-      <p><%= users_vinyl.user.email %></p>
-      <a><%= link_to 'Je le veux', new_users_vinyl_exchange_path(users_vinyl), class: "btn btn-info" %></a>
-    </div>
+  <h2 class="mb-5">Ces personnes ont ce vinyle</h2>
+  <% if @vinyl == @user_vinyl %>
+    <p>Hello</p>
+    <% else %>
+    <% @users_vinyls.each do |users_vinyl| %>
+      <div class="card mb-3">
+        <div class="d-flex justify-content-between card-user ">
+          <%= image_tag "https://res.cloudinary.com/dvw6upciw/image/upload/v1670444837/avatar_e5p5i5.webp", :width=>80, :height=>80%>
+          <p><%= users_vinyl.user.email %></p>
+          <a><%= link_to 'Je le veux', new_users_vinyl_exchange_path(users_vinyl), class: "btn btn-info" %></a>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
-
-
-
-<%= link_to 'Return', vinyls_path, class: "btn btn-info" %>
-<%= link_to 'Accueil', root_path, class: "btn btn-info" %>

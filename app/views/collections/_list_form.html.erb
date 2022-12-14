@@ -1,10 +1,10 @@
-<div class="dropdown list-form">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+<div class="dropstart dropup list-form">
+  <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu form-style">
     <%= simple_form_for([user_vinyl, @collections_vinyl]) do |f| %>
-      <%=f.input :collection_id, as: :radio_buttons, collection: @collections_select  %>
-      <%= f.submit %>
+      <%=f.input :collection_id, as: :radio_buttons, collection: @collections_select, label: ""%>
+      <%= f.submit class: "form-style", value: "Valider"%>
     <% end %>
 
   </ul>
