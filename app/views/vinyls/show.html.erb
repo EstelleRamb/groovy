@@ -22,11 +22,11 @@
 <div class="container">
   <h2 class="mb-5">Ces personnes ont ce vinyle</h2>
     <% @users_vinyls.each do |users_vinyl| %>
-      <div class="card mb-3">
+      <div class="card card-user mb-3">
         <div class="d-flex justify-content-space-around align-items-center card-user">
           <%= image_tag "https://res.cloudinary.com/dvw6upciw/image/upload/v1670444837/avatar_e5p5i5.webp", :width=>60, :height=>60%>
           <p class= "p-0 m-0"><%= users_vinyl.user.first_name.capitalize %></p>
-        
+
           <a><%= link_to 'Je le veux', new_users_vinyl_exchange_path(users_vinyl), class: "btn btn-info" %></a>
         </div>
       </div>
