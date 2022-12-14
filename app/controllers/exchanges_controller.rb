@@ -40,6 +40,7 @@ class ExchangesController < ApplicationController
   end
 
   def complete_exchange
+
     requested_users_vinyl = @exchange.requested_vinyl
     offered_users_vinyl = @exchange.offered_vinyl
 
