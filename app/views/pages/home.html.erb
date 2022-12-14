@@ -2,12 +2,12 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dvw6upciw/image/upload/v1670444848/adrian-korte-5gn2soeAc40-unsplash_sz9jt7.jpg);">
   <div class="container">
     <h1 id="groovy">Groovy</h1>
-    <p id="intro">Votre collection de vinyles sur mesure.</p>
+    <p id="intro">Votre collection de vinyles sur mesure</p>
     <a><%= link_to "Commencer", vinyls_path, class:"button "%></a>
   </div>
 </div>
 
-<div class="perfect-place-for-grid-container d-flex flex-column index-logo">
+<%# <div class="perfect-place-for-grid-container d-flex flex-column index-logo">
   <h3 class="perfect-place-for-title text-center">L'endroit parfait</h3>
   <div class="d-flex justify-content-evenly w-80">
     <div class = "d-flex flex-column">
@@ -23,12 +23,27 @@
       <p class = "icon-title btn btn-info mt-2" >Échanger</p>
     </div>
   </div>
+</div> %>
+
+<div class="container pt-5 mt-5 container-home">
+  <div class="d-flex justify-content-between">
+    <div class="">
+      <img src="https://res.cloudinary.com/dvw6upciw/image/upload/v1670982621/vinyl_clh2ba.png" alt="" style= "width: 200px" >
+      <p class="text-icon pt-3">Collectionez</p>
+    </div>
+    <div>
+      <img src="https://res.cloudinary.com/dvw6upciw/image/upload/v1670982546/vinyls_zghasz.png" alt="" style= "width: 200px" >
+      <p class="text-icon pt-3">Organisez</p>
+    </div>
+    <div>
+      <img src="https://res.cloudinary.com/dvw6upciw/image/upload/v1670982939/swap_1_h9zxyw.png" alt="" style= "width: 200px" >
+      <p class="text-icon pt-3">Échangez</p>
+    </div>
+  </div>
 </div>
 
-
 <div class="d-flex justify-content-center">
-
-  <%# CAROUSEL 1 %>
+    <%# CAROUSEL 1 %>
   <div class="carousel slide carousel-vinyls" data-bs-ride="carousel" data-bs-interval="3000">
     <div class="carousel-inner">
       <div class="carousel-item active">
