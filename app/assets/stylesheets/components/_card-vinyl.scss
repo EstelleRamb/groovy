@@ -9,9 +9,11 @@
 //   color: white;
 // }
 .vinyl_image {
-width: 250px;
-height: 250px;
-
+width: 100%;
+object-fit: cover;
+// height: 250px;
+aspect-ratio: 1 / 1;
+padding: 20px;
 }
 
 .selected{
@@ -26,4 +28,10 @@ height: 250px;
 .description{
   font-size: 14px;
   font-weight: 40;
+}
+
+.vinyl-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
