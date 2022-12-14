@@ -36,7 +36,7 @@
                   <p><%= exchange.offered_vinyls.first.users_vinyl.vinyl.year %></p>
                 </div>
               </a>
-              
+
                 <div class="collapse" id="collapseExample">
                   <div class="card card-body">
                     <% exchange.offered_vinyls.each do |offered_vinyl| %>
@@ -75,8 +75,8 @@
     data-exchange-subscription-exchange-id-value="<%= @exchange.id %>"
     data-exchange-subscription-current-user-id-value="<%= current_user.id %>"
   >
-  <div class ="openChat"> 
-    <h1>#<%= @exchange.user.first_name %></h1>
+  <div class ="openChat">
+    <h1>#<%= @exchange.requested_vinyl.user.first_name %></h1>
 
     <div class="messages" id="myForm" data-exchange-subscription-target="messages">
       <% @exchange.messages.each do |message| %>
@@ -93,7 +93,7 @@
     %>
       <%= f.input :content,
         label: false,
-        placeholder: "Message ##{@exchange.user.first_name}",
+        placeholder: "Message ##{@exchange.requested_vinyl.user.first_name}",
         wrapper_html: {class: "flex-grow-1"}
       %>
       <%= f.submit "Envoyer", class: "btn btn-info" %>
@@ -120,7 +120,7 @@
         <div class="modal-header">
           <h5 class="modal-body" id="exampleModalLabel">Un nouveau vinyle vient d'entrer dans ta collection</h5>
         </div>
-        
+
         <div class="modal-footer">
           <button type="button" class="btn btn-info mt-3" data-bs-dismiss="modal">Close</button>
         </div>
