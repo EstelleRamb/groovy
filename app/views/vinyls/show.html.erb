@@ -25,7 +25,7 @@
       <div class="card mb-3">
         <div class="d-flex justify-content-between card-user ">
           <%= image_tag "https://res.cloudinary.com/dvw6upciw/image/upload/v1670444837/avatar_e5p5i5.webp", :width=>80, :height=>80%>
-          <p><%= users_vinyl.user.email %></p>
+          <p><%= users_vinyl.user.first_name %></p>
           <a><%= link_to 'Je le veux', new_users_vinyl_exchange_path(users_vinyl), class: "btn btn-info" %></a>
         </div>
       </div>
