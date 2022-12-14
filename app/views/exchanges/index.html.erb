@@ -55,7 +55,10 @@
                     </h5>
                   </div>
                 </div>
-              <% else %>
+
+              
+
+             <% else %>
                 <a
                   data-bs-toggle="collapse"
                   href="#collapseExample-<%= exchange.id %>"
@@ -78,6 +81,7 @@
                 </a>
 
                 <div class="collapse" id="collapseExample-<%= exchange.id %>">
+
                   <div class="card card-body">
                     <% exchange.offered_vinyls.each do |offered_vinyl| %>
                       <div class="d-flex flex-column">
@@ -116,10 +120,12 @@
   <div class="container exchange"
     data-controller="exchange-subscription"
     data-exchange-subscription-exchange-id-value="<%= @exchange.id %>"
-
-  <div class ="openChat"> 
-    <h1>#<%= @exchange.user.first_name.capitalize %></h1>
+    data-exchange-subscription-current-user-id-value="<%= current_user.id %>"
+  >
+  <div class ="openChat">
+    <h1>#<%= @exchange.requested_vinyl.user.first_name.capitalize %></h1>
     data-exchange-subscription-current-user-id-value="<%= current_user.id %>">
+
 
 
     <div class ="openChat">
@@ -156,7 +162,9 @@
     %>
       <%= f.input :content,
         label: false,
-        placeholder: "Message ##{@exchange.user.first_name.capitalize}",
+
+        placeholder: "Message ##{@exchange.requested_vinyl.user.first_name.capitalize}",
+
         wrapper_html: {class: "flex-grow-1"}
       %>
       <%= f.submit "Envoyer", class: "btn btn-info" %>
@@ -184,6 +192,7 @@
         <div class="modal-header">
           <h5 class="modal-body" id="exampleModalLabel">Un nouveau vinyle vient d'entrer dans ta collection</h5>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-info mt-3" data-bs-dismiss="modal">Close</button>
         </div>
