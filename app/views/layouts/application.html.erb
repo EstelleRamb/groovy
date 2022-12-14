@@ -4,9 +4,17 @@
     <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
 
     <title>Groovy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Votre collection de vinyles sur mesure" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="Groovy">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://groovy-library.herokuapp.com/">
+    <meta property="og:image" content="https://res.cloudinary.com/dvw6upciw/image/upload/v1670444848/adrian-korte-5gn2soeAc40-unsplash_sz9jt7.jpg">
+    <meta property="og:description" content="Collectionnez, organisez et échangez des vinyles pour obtenir la collection de vos rêves.">
+    <meta property="og:site_name" content="Groovy">
 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
