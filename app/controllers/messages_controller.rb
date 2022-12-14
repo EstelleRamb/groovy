@@ -12,6 +12,7 @@ class MessagesController < ApplicationController
         sender_id: @message.user.id
       )
       head :ok
+      
     else
       render "exchanges/show", status: :unprocessable_entity
     end
