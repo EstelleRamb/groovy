@@ -12,7 +12,7 @@ class VinylsController < ApplicationController
   def show
     @vinyl = Vinyl.find(params[:id])
     @users_vinyls = UsersVinyl.where(vinyl: @vinyl).where(offer_for_trade: true)
-
+    @users_vinyl = UsersVinyl.where(vinyl: @vinyl)
     # collections = collections_vinyls.map do |collection_vinyl|
     #   collection_vinyl.collection
     # end
