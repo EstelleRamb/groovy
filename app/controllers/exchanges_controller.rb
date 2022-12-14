@@ -4,11 +4,11 @@ class ExchangesController < ApplicationController
   def index
     @exchanges = current_user.exchanges
     @incoming_exchanges = current_user.incoming_exchanges
+    @exchange = Exchange.last
+    @message = Message.new
   end
 
   def show
-    @exchange = Exchange.last
-    @message = Message.new
   end
 
   def create
