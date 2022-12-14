@@ -19,10 +19,22 @@
           <strong>Artiste</strong>
           <%= vinyl.artist.name %>
       </p>
-      <p id="yellow-sentence">
-        <i class="fa-solid fa-user-group"></i>
-        <%= @users_vinyls.count %>
-      </p>
+
+      <% if vinyl.users_vinyls.available_for_trade.count == 0%>
+        <p id="yellow-sentence">
+          <i class="fa-solid fa-user-group"></i> Personne ne possède ce vinyle
+        </p>
+      <%elsif vinyl.users_vinyls.available_for_trade.count == 1 %>
+        <p id="yellow-sentence">
+          <i class="fa-solid fa-user-group"></i> 1 personne possède ce vinyle
+        </p>
+      <% else %>
+        <p id="yellow-sentence">
+          <i class="fa-solid fa-user-group"></i> <%=vinyl.users_vinyls.available_for_trade.count%>personne(s) ont ce vinyle
+        </p>
+
+      <%end%>
+
     </div>
 
   </div>
