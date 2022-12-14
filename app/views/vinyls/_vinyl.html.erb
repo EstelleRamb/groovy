@@ -2,10 +2,12 @@
 
   <%# <img class="card-img-top"> %>
   <div class="" >
+
     <div>
       <%= link_to image_tag(vinyl.photo_url, :class=>"vinyl_image m-4", :width=>100, :height=>100, :style=>"object-fit: cover; margin: 5px"), vinyl%>
         <%= link_to "+",  vinyl_users_vinyls_path(vinyl, query: params[:query]), class:"button-plus", data: {turbo_method: :post} %>
     </div>
+
     <div class="text p-4 flex-fill">
       <strong>Titre</strong>
       <%= vinyl.title %>
@@ -22,4 +24,5 @@
         <%= @users_vinyls.count %>
       </p>
     </div>
+
   </div>
