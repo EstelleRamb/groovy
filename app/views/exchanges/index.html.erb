@@ -1,92 +1,155 @@
 <div class="text-center p-5" style="background-color: #FAC066">
  <h2>Commence ton échange</h2>
 </div>
-    <ul>
-     <% @exchanges.each do |exchange| %>
-      <% unless exchange.offered_vinyl.nil? %>
-        <%= link_to complete_exchange_exchange_path(exchange), data: { turbo_method: :post } do %>
-          <button class= "btn btn-info mt-3">Valider</button>
-         <% end %>
-       <% end %>
-        <div class="mt-4 mb-4 container d-flex justify-content-between">
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col">
-              <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image card-img-top p-3 " unless exchange.requested_vinyl.nil?%>
-              <h5 class="card-title"><%= exchange.requested_vinyl.vinyl.title %>(<%= exchange.requested_vinyl.vinyl.year %>)</h5>
-              <p class="description"><%= exchange.requested_vinyl.vinyl.artist.name %></p>
-             </div>
-           </div>
+<div class="container">
+  <% @exchanges.each do |exchange| %>
+    <div class="row d-flex justify-content-center my-5">
+      <%# <div class=""> %>
 
-          <div>
-            <i class='fas fa-exchange-alt' style='font-size:60px;color:white;margin-top:100px;background:#FAC066;border-radius:16px'></i>
+        <%# <div class="mt-4 mb-4 d-flex justify-content-between"> %>
+          <div class="col-3">
+            <div class="card p-3">
+              <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image mb-2" unless exchange.requested_vinyl.nil? %>
+              <h5 class="card-title">
+                <%= exchange.requested_vinyl.vinyl.title %>(<%= exchange.requested_vinyl.vinyl.year %>)
+              </h5>
+              <p class="description">
+                <%= exchange.requested_vinyl.vinyl.artist.name %>
+              </p>
+            </div>
           </div>
 
-        <div class="d-flex justify-content-between flex-column p-2">
-          <% if exchange.offered_vinyl %>
-              <div class="d-flex flex-column p-2">
-                <%= image_tag exchange.offered_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
-                <p><%= exchange.offered_vinyl.vinyl.title %></p>
-                <p><%= exchange.offered_vinyl.vinyl.year %></p>
+          <div class="col-3 " style="height: 365px;">
+            <div class="d-flex flex-column justify-content-evenly align-items-center h-100">
+              <p class="w-75 text-center m-0">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+
+              <div class="text-center">
+                <i class="fa-solid fa-rotate fleche-echange"></i>
               </div>
-          <% else %>
-             <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="text-dark">
-                <div class="d-flex flex-column p-2">
-                  <%= image_tag exchange.offered_vinyls.first.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?  %>
-                  <p><%= exchange.offered_vinyls.first.users_vinyl.vinyl.title %></p>
-                  <p><%= exchange.offered_vinyls.first.users_vinyl.vinyl.year %></p>
+              <div class="d-flex flex-column align-items-center">
+              <% if exchange.offered_vinyl_id.nil? %>
+               <p>en attente</p>
+               <% else %>
+                  <% unless exchange.offered_vinyl.nil? %>
+                    <%= link_to complete_exchange_exchange_path(exchange), data: { turbo_method: :post } do %>
+                    <button class= "btn btn-info mt-3">Valider</button>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                <button class="openChatBtn btn-chat" onclick="openForm()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
+                    <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="d-flex justify-content-between flex-column">
+              <% if exchange.offered_vinyl %>
+                <div class="d-flex flex-column">
+                  <div class="card p-3">
+                    <%= image_tag exchange.offered_vinyl.vinyl.photo_url, class:"vinyl_image mb-2" unless exchange.requested_vinyl.nil? %>
+                    <h5 class="card-title">
+                      <%= exchange.offered_vinyl.vinyl.title %>(<%= exchange.offered_vinyl.vinyl.year %>)
+                    </h5>
+                  </div>
                 </div>
-              </a>
-              
-                <div class="collapse" id="collapseExample">
+              <% else %>
+                <a
+                  data-bs-toggle="collapse"
+                  href="#collapseExample-<%= exchange.id %>"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseExample-<%= exchange.id %>"
+                  class="text-dark"
+                >
+                  <div class="card p-3">
+                    <div class="d-flex flex-column">
+                      <%= image_tag exchange.offered_vinyls.first.users_vinyl.vinyl.photo_url, class:"vinyl_image mb-2" unless exchange.requested_vinyl.nil? %>
+                      <h5 class="card-title">
+                        <%= exchange.offered_vinyls.first.users_vinyl.vinyl.title %>(<%= exchange.offered_vinyls.first.users_vinyl.vinyl.year %>)
+                      </h5>
+                      <p class="description">
+                        <%= exchange.offered_vinyls.first.users_vinyl.vinyl.artist.name %>
+                      </p>
+                    </div>
+                  </div>
+                </a>
+
+                <div class="collapse" id="collapseExample-<%= exchange.id %>">
                   <div class="card card-body">
                     <% exchange.offered_vinyls.each do |offered_vinyl| %>
-                      <div class="d-flex flex-column p-2">
-                        <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?  %>
+                      <div class="d-flex flex-column">
+                        <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil? %>
                         <p><%= offered_vinyl.users_vinyl.vinyl.title %></p>
                         <p><%= offered_vinyl.users_vinyl.vinyl.year %></p>
                       </div>
-                     <% end %>
-                    </div>
-                   </div>
-                  <% end %>
-                 </div>
-                <%end%>
-               </ul>
-              </div>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <%# </div> %>
+      <%# </div> %>
+    </div>
+  <%end%>
+</div>
 
-  <h2>Voici les échanges proposés</h2>
-    <% @incoming_exchanges.each do |incoming_exchange| %>
-      <%= simple_form_for(incoming_exchange, data: { turbolinks: false }) do |f| %>
-        <p>Veuillez selectionner un vinyl</p>
-        <%= f.association :offered_vinyl, as: :radio_buttons, collection: incoming_exchange.offered_vinyls, label_method: lambda { |offered_vinyl| "
-          #{image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless incoming_exchange.requested_vinyl.nil?}
-          <p>#{offered_vinyl.users_vinyl.vinyl.title}</p>
-          <p>#{offered_vinyl.users_vinyl.vinyl.year}</p>
-          ".html_safe } %>
-        <%= f.submit "Valider", class:"btn btn-info mt-3" %>
-      <% end %>
+<h2>Voici les échanges proposés</h2>
+  <% @incoming_exchanges.each do |incoming_exchange| %>
+    <%= simple_form_for(incoming_exchange, data: { turbolinks: false }) do |f| %>
+      <p>Veuillez selectionner un vinyl</p>
+        <div class="card p-3">
+          <%= f.association :offered_vinyl, as: :radio_buttons, collection: incoming_exchange.offered_vinyls, label: "", label_method: lambda { |offered_vinyl| "
+              #{image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image mb-2" unless incoming_exchange.requested_vinyl.nil?}
+              <p>#{offered_vinyl.users_vinyl.vinyl.title}</p>
+              <p>#{offered_vinyl.users_vinyl.vinyl.year}</p>
+              ".html_safe }
+          %>
+          <%= f.submit "Valider", class:"btn btn-info mt-3" %>
+        </div>
     <% end %>
+  <% end %>
 
-  <button class="openChatBtn btn btn-info mt-3" onclick="openForm()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
-  <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
-    </svg></button>
   <div class="container exchange"
     data-controller="exchange-subscription"
     data-exchange-subscription-exchange-id-value="<%= @exchange.id %>"
-    data-exchange-subscription-current-user-id-value="<%= current_user.id %>"
-  >
+
   <div class ="openChat"> 
     <h1>#<%= @exchange.user.first_name.capitalize %></h1>
+    data-exchange-subscription-current-user-id-value="<%= current_user.id %>">
 
-    <div class="messages" id="myForm" data-exchange-subscription-target="messages">
-      <% @exchange.messages.each do |message| %>
-      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-          <%= render "messages/message", message: message %>
+
+    <div class ="openChat">
+      <h1><%= @exchange.user.first_name %></h1>
+        <div class="messages"
+             id="myForm"
+             data-exchange-subscription-target="messages">
+            <% @exchange.messages.each do |message| %>
+              <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start'%>">
+                <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+                  <%= render "messages/message", message: message %>
+                </div>
+              </div>
+            <% end %>
         </div>
-      </div>
-    <% end %>
+        <%= simple_form_for [@exchange, @message],
+          html: {data: {action: "turbo:submit-end->exchange-subscription#resetForm"}, class: "d-flex"} do |f|%>
+          <%= f.input :content,
+            label: false,
+            placeholder: "Message ##{@exchange.user.first_name}",
+            wrapper_html: {class: "flex-grow-1"}
+          %>
+          <%= f.submit "Envoyer", class: "btn btn-info" %>
+            <button type="button"
+                    class="btn cancel btn btn-info"
+                    onclick="closeForm()"­>fermer
+            </button>
+          <% end %>
     </div>
+
 
     <%= simple_form_for [@exchange, @message],
       html: {data: {action: "turbo:submit-end->exchange-subscription#resetForm"}, class: "d-flex"} do |f|
@@ -99,35 +162,35 @@
       <%= f.submit "Envoyer", class: "btn btn-info" %>
       <button type="button" class="btn cancel btn btn-info" onclick="closeForm()"­>fermer </button>
     <% end %>
-  </div>
-</div>
 
-<script>
- document.querySelector(".openChatBtn") .addEventListener("click", openForm);
- document.querySelector(".close").addEventListener("click", closeForm);
- function openForm() {
-    document.querySelector(".openChat").style.display = "block";
-    document.querySelector(".messages").scrollTo(0, 2000000000)
- }
- function closeForm() {
-    document.querySelector(".openChat").style.display = "none";
-   }
-</script>
- <button type ="submit" class= "btn btn-info mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Valider</button>
+  </div>
+
+  <script>
+  document.querySelector(".openChatBtn") .addEventListener("click", openForm);
+  document.querySelector(".close").addEventListener("click", closeForm);
+  function openForm() {
+      document.querySelector(".openChat").style.display = "block";
+      document.querySelector(".messages").scrollTo(0, 2000000000)
+  }
+  function closeForm() {
+      document.querySelector(".openChat").style.display = "none";
+    }
+  </script>
+
+
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-body" id="exampleModalLabel">Un nouveau vinyle vient d'entrer dans ta collection</h5>
         </div>
-        
         <div class="modal-footer">
           <button type="button" class="btn btn-info mt-3" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
-</div>
+
 
   <script>
     var myModal = document.getElementById('myModal')
