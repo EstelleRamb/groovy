@@ -38,15 +38,13 @@ Genre.destroy_all
 puts "all done"
 
 print "creating users..."
-users = %w[yuhecny edgar concorde estelle michelle]
-users.each do |user|
-  User.create!(
-    email: "#{user}@gmail.com",
-    first_name: user,
-    password: "123456",
-    address: "5333 casgrain"
-  )
-end
+
+User.create!(first_name: 'yuhecny', email: 'yuhecny@gmail.com', password: '123456', address: '4436 belanger, Montréal')
+User.create!(first_name: 'edgar', email: 'edgar@gmail.com', password: '123456', address: '5330 papineau, Montréal')
+User.create!(first_name: 'concorde', email: 'concorde@gmail.com', password: '123456', address: '2302 provencher, Montréal')
+User.create!(first_name: 'estelle', email: 'estelle@gmail.com', password: '123456', address: '3690 belair, Montréal')
+User.create!(first_name: 'michelle', email: 'michelle@gmail.com', password: '123456', address: '5378 boulevard saint laurent, Montréal')
+
 chatroom = Chatroom.create(name: "general")
 
 puts '--------------------------------'
