@@ -1,13 +1,13 @@
 
+<div class="text-center p-5" style="background-color: #FAC066">
+  <h2>Vous avez <%= @users_vinyls.count %> vinyles dans votre collection </h2>
+</div>
+
 <div class="container">
   <div class="d-flex align-items-center mt-3">
     <i class="fa-solid fa-arrow-left"></i>
     <a><%= link_to "Retour", vinyls_path, class: "btn btn-retour " %></a>
   </div>
-</div>
-
-<div class="text-center p-5" style="background-color: #FAC066">
-  <h2>Vous avez <%= @users_vinyls.count %> vinyles dans votre collection </h2>
 </div>
 
 <div class="container">
@@ -61,7 +61,6 @@
                   aria-selected="false">Mes vinyles à échanger</button>
       </div>
     </nav>
-</div>
 
 
   <div  class= "container mt-4 mb-4">
