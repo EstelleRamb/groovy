@@ -21,9 +21,6 @@
 
 <div class="container">
   <h2 class="mb-5">Ces personnes ont ce vinyle</h2>
-  <% if @vinyl == @user_vinyl %>
-    <p>Hello</p>
-    <% else %>
     <% @users_vinyls.each do |users_vinyl| %>
       <div class="card mb-3">
         <div class="d-flex justify-content-between card-user ">
@@ -33,5 +30,4 @@
         </div>
       </div>
     <% end %>
-  <% end %>
 </div>
