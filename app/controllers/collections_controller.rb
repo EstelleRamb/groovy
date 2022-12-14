@@ -28,7 +28,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.new(collection_params)
     @collection.user = current_user
     if @collection.save
-      redirect_to collections_path
+      redirect_to collection_path(@collection)
     else
       render :new, status: :unprocessable_entity
     end

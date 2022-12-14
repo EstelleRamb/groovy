@@ -1,10 +1,7 @@
-<h1 class="text-center">Echange en cours</h1>
-    <%= link_to "Retour", collections_path, class: "btn btn-info mt-3"%>
-    <div class="container d-flex justify-content-between">
-      <h4>Vinyle de Michelle</h4>
-      <h4>Mon vinyle</h4>
-    </div>
-  <h2>Mes demandes d'échanges</h2>
+<div class="text-center p-5" style="background-color: #FAC066">
+    <h2>Commence ton échange</h2>
+  </div>
+
     <ul>
       <% @exchanges.each do |exchange| %>
       <li>
@@ -13,11 +10,14 @@
           <button class= "btn btn-info mt-3">Valider</button>
         <% end %>
       <% end %>
-        <div class=" container d-flex justify-content-between">
-          <div>
-            <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil?%>
-            <p><%= exchange.requested_vinyl.vinyl.title %></p>
-            <p><%= exchange.requested_vinyl.vinyl.year %></p>
+        <div class="mt-4 mb-4 container d-flex justify-content-between">
+          <div class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="col">
+
+                <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image card-img-top p-3 " unless exchange.requested_vinyl.nil?%>
+                <h5 class="card-title"><%= exchange.requested_vinyl.vinyl.title %>(<%= exchange.requested_vinyl.vinyl.year %>)</h5>
+                <p class="description"><%= exchange.requested_vinyl.vinyl.artist.name %></p>
+            </div>
           </div>
         <div class="d-flex justify-content-between flex-column p-2">
           <% if exchange.offered_vinyl %>
