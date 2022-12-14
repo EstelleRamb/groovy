@@ -1,4 +1,8 @@
 
+<div class="text-center p-5" style="background-color: #FAC066">
+  <h2>Vous avez <%= @users_vinyls.count %> vinyles dans votre collection </h2>
+</div>
+
 <div class="container">
   <div class="d-flex align-items-center mt-3">
     <i class="fa-solid fa-arrow-left"></i>
@@ -6,60 +10,57 @@
   </div>
 </div>
 
-<div class="text-center p-5" style="background-color: #FAC066">
-  <h2>Vous avez <%= @users_vinyls.count %> vinyles dans votre collection </h2>
-</div>
-
-
 <div class="container">
 
-  <div class="simple_form search w-50 mt-4 mb-4 text-center">
-    <%= form_with url: collections_path, method: :get, class: "d-flex search-form-control form-group" do %>
-      <%= text_field_tag :query,
-          params[:query],
-          class: "form-control string required ",
-          placeholder: "Recherche un vinyle..."
-          %>
-          <%= submit_tag "Soumettre", class:"button" %>
-    <% end %>
+  <div class="d-flex justify-content-center">
+    <div class="simple_form search w-50 mt-4 mb-4 text-center">
+      <%= form_with url: collections_path, method: :get, class: "d-flex search-form-control form-group" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control string required ",
+            placeholder: "Recherche un vinyle..."
+            %>
+            <%= submit_tag "Soumettre", class:"button" %>
+      <% end %>
+    </div>
   </div>
 
-<div data-controller ="onglet">
-  <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <button  data-onglet-target = "all"
-               data-action="click->onglet#all"
-               class="nav-link"
-               id="nav-home-tab"
-               data-bs-toggle="tab"
-               data-bs-target="#nav-home"
-               type="button" role="tab"
-               aria-controls="nav-home"
-               aria-selected="true">Mes vinyles</button>
+  <div data-controller ="onglet">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button  data-onglet-target = "all"
+                  data-action="click->onglet#all"
+                  class="nav-link"
+                  id="nav-home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-home"
+                  type="button" role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true">Mes vinyles</button>
 
-      <button data-onglet-target="playlist"
-              data-action="click->onglet#playlist"
-              class="nav-link"
-              id="nav-profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-profile"
-              type="button"
-              role="tab"
-              aria-controls="nav-profile"
-              aria-selected="false">Mes listes</button>
+          <button data-onglet-target="playlist"
+                  data-action="click->onglet#playlist"
+                  class="nav-link"
+                  id="nav-profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false">Mes listes</button>
 
-      <button data-onglet-target="echange"
-              data-action="click->onglet#echange"
-              class="nav-link"
-              id="nav-contact-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-contact"
-              type="button"
-              role="tab"
-              aria-controls="nav-contact"
-              aria-selected="false">Mes vinyles à échanger</button>
-    </div>
-  </nav>
+          <button data-onglet-target="echange"
+                  data-action="click->onglet#echange"
+                  class="nav-link"
+                  id="nav-contact-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-contact"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-contact"
+                  aria-selected="false">Mes vinyles à échanger</button>
+      </div>
+    </nav>
 
 
   <div  class= "container mt-4 mb-4">
@@ -122,15 +123,15 @@
     <div class= "mt-4 mb-4">
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <% @vinyls_to_exchange.each do |to_exchange| %>
-        <div class="col">
-          <div data-onglet-target="echanges" class="card shadow p-3 d-none">
-            <div><%= image_tag (to_exchange.photo_url), class:"card-img-top" %></div>
-            <div class="card-body">
-              <h5 class="card-title"><%= to_exchange.title%>(<%=to_exchange.year%>)</h5>
-              <p class="description"><%= to_exchange.artist.name%></p>
+          <div class="col">
+            <div data-onglet-target="echanges" class="card shadow p-3 d-none">
+              <div><%= image_tag (to_exchange.photo_url), class:"card-img-top" %></div>
+              <div class="card-body">
+                <h5 class="card-title"><%= to_exchange.title%>(<%=to_exchange.year%>)</h5>
+                <p class="description"><%= to_exchange.artist.name%></p>
+              </div>
             </div>
           </div>
-        </div>
         <% end %>
       </div>
     </div>

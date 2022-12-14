@@ -3,10 +3,18 @@
   <head>
     <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
 
-    <title>Groovy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Groovy - Votre collection de vinyles sur mesure </title>
+    <meta name="Votre collection de vinyles sur mesure" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="Groovy">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://groovy-library.herokuapp.com/">
+    <meta property="og:image" content="https://res.cloudinary.com/dvw6upciw/image/upload/v1671032289/rsz_1adrian-korte-5gn2soeac40-unsplash_ctqqat.jpg">
+    <meta property="og:description" content="Collectionnez, organisez et échangez des vinyles pour obtenir la collection de vos rêves.">
+    <meta property="og:site_name" content="Groovy">
 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
@@ -15,11 +23,19 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-    <%= yield %>
+  <body class="d-flex flex-column">
+    <%= render "shared/navbar" %>
+
+    <%= render "shared/flashes" %>
+
+    <main class="flex-fill">
+      <%= yield %>
+    </main>
+
+    <%= render "shared/footer" %>
+
   </body>
-    <div class="footer">
+    <%# <div class="footer">
       <div class="footer-links">
         <a href="#"><i class="fab fa-github"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -30,6 +46,6 @@
       <div class="footer-copyright">
         Fait avec <i class="fas fa-heart"></i> par la Groovy Team
       </div>
-  </div>
+    </div> %>
 
 </html>
