@@ -194,10 +194,10 @@
     :vinyls_mappings:
       - :title: "Purple Rain"
         :offer_for_trade: false
-        :collection: "pop"
+        :collection: "Pop"
       - :title: "Me.I Am Mariah"
         :offer_for_trade: false
-        :collection: "pop"
+        :collection: "Pop"
       - :title: "Comme d'habitude"
         :offer_for_trade: true
         :collection: "Variété"
@@ -220,7 +220,7 @@
   - :first_name: "concorde"
     :last_name: "nzeyimana"
     :address: "5378 boulevard saint laurent, Montréal"
-     :collections:
+    :collections:
       - :name: "Rock"
     :vinyls_mappings:
       - :title: "A Night At The Opera"
@@ -239,7 +239,7 @@
   - :first_name: "estelle"
     :last_name: "rambur"
     :address: "4663 rue saint urbain, Montréal"
-     :collections:
+    :collections:
       - :name: "Rock"
     :vinyls_mappings:
       - :title: "A Night At The Opera"
