@@ -9,23 +9,28 @@
 </div>
 
 <div class= "container">
-  <div class="row row-cols-1 row-cols-md-4 g-4  mt-2">
+  <div class="row row-cols-1 row-cols-md-4 g-4 mt-2 text px-4 pb-4 flex-fill">
     <% @collection.vinyls.each do |vinyl| %>
     <div class="col">
       <div class ="card shadow">
-        <img><%= image_tag (vinyl.photo_url), class:"card-img-top p-3" %>
+        <img><%= image_tag (vinyl.photo_url), class:"vinyl_image" %>
         <div class="text p-3 flex-fill">
-          <h5 class="card-title"><%= vinyl.title %>(<%= vinyl.year %>)</h5>
-          <p class="description"><%= vinyl.artist.name %> </p>
+          <div class="vinyl-title">
+            <p class="fw-bold m-0">
+              <%= vinyl.title %>
+            </p>
+          </div>
+          <p>
+            <%# <strong>Artiste</strong> %>
+            <%= vinyl.artist.name %>, <em><%= vinyl.year %></em>
+          </p>
+
         </div>
       </div>
     </div>
     <% end %>
 
   </div>
-
-
 </div>
-
 
 <%# # Afficher le vinyl de la collection  %>

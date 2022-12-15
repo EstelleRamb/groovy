@@ -1,40 +1,33 @@
 
-
-  <%# <img class="card-img-top"> %>
-  <div class="" >
-
-    <div>
-      <%= link_to image_tag(vinyl.photo_url, :class=>"vinyl_image"), vinyl%>
-        <%= link_to "+",  vinyl_users_vinyls_path(vinyl, query: params[:query]), class:"button-plus", data: {turbo_method: :post} %>
-    </div>
-
-    <div class="text px-4 pb-4 flex-fill">
-      <%# <strong>Titre</strong> %>
-      <div class="vinyl-title"><strong><%= vinyl.title %></strong></div>
-      <%# <p>
-          <strong>Année</strong>
-          <%= vinyl.year %
-      </p> %>
-      <p>
-          <%# <strong>Artiste</strong> %>
-          <%= vinyl.artist.name %>, <em><%= vinyl.year %></em>
-      </p>
-
-      <% if vinyl.users_vinyls.available_for_trade.count == 0%>
-        <div id="yellow-sentence">
-          <i class="fa-solid fa-user-group"></i> Personne ne possède ce vinyle
-        </div>
-      <%elsif vinyl.users_vinyls.available_for_trade.count == 1 %>
-        <div id="yellow-sentence">
-          <i class="fa-solid fa-user-group"></i> Une personne possède ce vinyle
-        </div>
-      <% else %>
-        <div id="yellow-sentence">
-          <i class="fa-solid fa-user-group"></i> <%=vinyl.users_vinyls.available_for_trade.count%> personnes ont ce vinyle
-        </div>
-
-      <%end%>
-
-    </div>
-
+<div class="card shadow">
+  <div>
+    <%= link_to image_tag(vinyl.photo_url, :class=>"vinyl_image"), vinyl%>
+      <%= link_to "+",  vinyl_users_vinyls_path(vinyl, query: params[:query]), class:"button-plus", data: {turbo_method: :post} %>
   </div>
+
+  <div class="text px-4 pb-4 flex-fill">
+    <div class="vinyl-title">
+      <p class="fw-bold m-0">
+        <%= vinyl.title %>
+      </p>
+    </div>
+    <p>
+      <%= vinyl.artist.name %>, <em><%= vinyl.year %></em>
+    </p>
+
+    <% if vinyl.users_vinyls.available_for_trade.count == 0%>
+      <div id="yellow-sentence">
+        <i class="fa-solid fa-user-group"></i> Personne ne possède ce vinyle
+      </div>
+    <%elsif vinyl.users_vinyls.available_for_trade.count == 1 %>
+      <div id="yellow-sentence">
+        <i class="fa-solid fa-user-group"></i> Une personne possède ce vinyle
+      </div>
+    <% else %>
+      <div id="yellow-sentence">
+        <i class="fa-solid fa-user-group"></i> <%=vinyl.users_vinyls.available_for_trade.count%> personnes ont ce vinyle
+      </div>
+
+    <%end%>
+  </div>
+</div>

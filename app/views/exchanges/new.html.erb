@@ -18,9 +18,10 @@
                data-action = "click->border-card#border">
             <label>
               <img><%= image_tag users_vinyl.vinyl.photo_url, class:"card-img-top p-3 " %>
-              <h5 class="card-title"><%= users_vinyl.vinyl.title%></h5>
-              <p class="description"><%= users_vinyl.vinyl.artist.name %>, <em><%= users_vinyl.vinyl.year %></em></p>
-              <input class="" type="checkbox" name="collection_vinyl_ids[]" value="<%= users_vinyl.id %>">
+              <h5 class="card-title"><%= users_vinyl.vinyl.title%> <%= users_vinyl.vinyl.year %></h5>
+              <p class="description"><%=users_vinyl.vinyl.artist.name%></p>
+              <input type="checkbox" name="collection_vinyl_ids[]" value="<%= users_vinyl.id %>">
+
             </label>
           </div>
         </div>

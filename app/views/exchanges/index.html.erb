@@ -6,14 +6,22 @@
     <% @exchanges.each do |exchange| %>
       <div class="row d-flex justify-content-center my-5">
           <div class="col-3">
-            <div class="card p-3">
-              <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image mb-2" unless exchange.requested_vinyl.nil? %>
-                <h5 class="card-title">
-                  <%= exchange.requested_vinyl.vinyl.title %>(<%= exchange.requested_vinyl.vinyl.year %>)
-                </h5>
-              <p class="description">
-                <%= exchange.requested_vinyl.vinyl.artist.name %>
-              </p>
+
+            <div class="card shadow">
+              <div>
+                <%= image_tag exchange.requested_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil? %>
+              </div>
+
+              <div class="text px-4 pb-4 flex-fill">
+                <div class="vinyl-title">
+                  <p class="fw-bold m-0">
+                  <%= exchange.requested_vinyl.vinyl.title %>
+                  </p>
+                </div>
+                <p>
+                  <%= exchange.requested_vinyl.vinyl.artist.name %>, <em><%= exchange.requested_vinyl.vinyl.year %></em>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -44,16 +52,28 @@
             </div>
           </div>
           <div class="col-3">
+
             <div class="d-flex justify-content-between flex-column">
               <% if exchange.offered_vinyl %>
                 <div class="d-flex flex-column">
-                  <div class="card p-3">
-                    <%= image_tag exchange.offered_vinyl.vinyl.photo_url, class:"vinyl_image mb-2" unless exchange.requested_vinyl.nil? %>
-                    <h5 class="card-title">
-                      <%= exchange.offered_vinyl.vinyl.title %>(<%= exchange.offered_vinyl.vinyl.year %>)
-                    </h5>
+                  <div class="card shadow">
+                    <div>
+                      <%= image_tag exchange.offered_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil? %>
+                    </div>
+
+                    <div class="text px-4 pb-4 flex-fill">
+                      <div class="vinyl-title">
+                        <p class="fw-bold m-0">
+                        <%= exchange.offered_vinyl.vinyl.title %>
+                        </p>
+                      </div>
+                      <p>
+                        <%= exchange.offered_vinyl.vinyl.artist.name %>, <em><%= exchange.offered_vinyl.vinyl.year %></em>
+                      </p>
+                    </div>
                   </div>
                 </div>
+
              <% else %>
                 <a
                   data-bs-toggle="collapse"
@@ -63,30 +83,52 @@
                   aria-controls="collapseExample-<%= exchange.id %>"
                   class="text-dark"
                 >
-                  <div class="card p-3">
-                    <div class="d-flex flex-column">
-                      <%= image_tag exchange.offered_vinyls.first.users_vinyl.vinyl.photo_url, class:"vinyl_image mb-2" unless exchange.requested_vinyl.nil? %>
-                      <h5 class="card-title">
-                        <%= exchange.offered_vinyls.first.users_vinyl.vinyl.title %>(<%= exchange.offered_vinyls.first.users_vinyl.vinyl.year %>)
-                      </h5>
-                      <p class="description">
-                        <%= exchange.offered_vinyls.first.users_vinyl.vinyl.artist.name %>
+
+                <div class="d-flex flex-column">
+                  <div class="card shadow">
+                    <div>
+                     <%= image_tag exchange.offered_vinyls.first.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil? %>
+                    </div>
+                    <div class="text px-4 pb-4 flex-fill">
+                      <div class="vinyl-title">
+                        <p class="fw-bold m-0">
+                        <%= exchange.offered_vinyls.first.users_vinyl.vinyl.title %>
+                        </p>
+                      </div>
+                      <p>
+                        <%= exchange.offered_vinyls.first.users_vinyl.vinyl.artist.name %>, <em><%= exchange.offered_vinyls.first.users_vinyl.vinyl.year %></em>
                       </p>
                     </div>
                   </div>
+                </div>
                 </a>
 
                 <div class="collapse" id="collapseExample-<%= exchange.id %>">
 
-                  <div class="card card-body">
+
                     <% exchange.offered_vinyls.each do |offered_vinyl| %>
-                      <div class="d-flex flex-column">
-                        <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil? %>
-                        <p><%= offered_vinyl.users_vinyl.vinyl.title %></p>
-                        <p><%= offered_vinyl.users_vinyl.vinyl.year %></p>
+
+
+                <div class="d-flex flex-column">
+                  <div class="card shadow">
+                    <div>
+                     <%= image_tag offered_vinyl.users_vinyl.vinyl.photo_url, class:"vinyl_image" unless exchange.requested_vinyl.nil? %>
+                    </div>
+                    <div class="text px-4 pb-4 flex-fill">
+                      <div class="vinyl-title">
+                        <p class="fw-bold m-0">
+                        <%= offered_vinyl.users_vinyl.vinyl.title %>
+                        </p>
                       </div>
-                    <% end %>
+                      <p>
+                        <%= offered_vinyl.users_vinyl.vinyl.artist.name %>, <em><%= offered_vinyl.users_vinyl.vinyl.year %></em>
+                      </p>
+                    </div>
                   </div>
+                </div>
+
+                    <% end %>
+
                 </div>
               <% end %>
             </div>

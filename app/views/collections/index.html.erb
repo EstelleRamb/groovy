@@ -30,7 +30,7 @@
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <button  data-onglet-target = "all"
                   data-action="click->onglet#all"
-                  class="nav-link"
+                  class="nav-link active tab"
                   id="nav-home-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#nav-home"
@@ -67,14 +67,15 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
       <% @users_vinyls.each do |user_vinyl|%>
         <div class="col">
+
           <div class="card shadow" data-onglet-target="cards">
-              <img><%= image_tag (user_vinyl.vinyl.photo_url), class:"card-img-top p-3 "%>
-            <div class="text p-3 flex-fill">
-              <h5 class="card-title">
-                <%= user_vinyl.vinyl.title %>(<%= user_vinyl.vinyl.year %>)
-              </h5>
+              <%= image_tag (user_vinyl.vinyl.photo_url), class:"vinyl_image"%>
+            <div class="text px-4 pb-4 flex-fill">
+              <div class="vinyl-title">
+                <p class="fw-bold m-0"><%= user_vinyl.vinyl.title %></p>
+              </div>
               <p class="description">
-                <%= user_vinyl.vinyl.artist.name %>
+                <%= user_vinyl.vinyl.artist.name %>, <em><%= user_vinyl.vinyl.year %></em>
               </p>
               <div class="d-flex justify-content-between align-items-center w-100">
 
@@ -102,7 +103,7 @@
     <div class="cards">
 
       <% if @vinyls_for_exchange %>
-        <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+        <div class="card-category m-3 d-none" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
           <a><%= link_to 'Pour Echanger', vinyls_to_exchange_path %>
         </div>
       <% end %>
@@ -113,7 +114,7 @@
             <a><%= link_to collection.name, collection %>
           </div>
         <% end %>
-      <div data-onglet-target="collections"><%= link_to "+", new_collection_path, class: "buton-add m-3"%></div>
+      <div data-onglet-target="collections" class="d-none"><%= link_to "+", new_collection_path, class: "buton-add m-3"%></div>
     </div>
   </div>
 
@@ -124,12 +125,21 @@
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <% @vinyls_to_exchange.each do |to_exchange| %>
           <div class="col">
-            <div data-onglet-target="echanges" class="card shadow p-3 d-none">
-              <div><%= image_tag (to_exchange.photo_url), class:"card-img-top" %></div>
-              <div class="card-body">
-                <h5 class="card-title"><%= to_exchange.title%>(<%=to_exchange.year%>)</h5>
-                <p class="description"><%= to_exchange.artist.name%></p>
+            <div data-onglet-target="echanges" class="card shadow d-none">
+              <div><%= image_tag (to_exchange.photo_url), class:"vinyl_image" %></div>
+              <div class="text px-4 pb-4 flex-fill">
+
+                  <div class="vinyl-title">
+                  <p class="fw-bold m-0">
+                  <%= to_exchange.title%>
+                  </p>
+                  </div>
+                  <p>
+                  <%= to_exchange.artist.name%>, <em><%=to_exchange.year%></em>
+                  </p>
               </div>
+
+
             </div>
           </div>
         <% end %>
