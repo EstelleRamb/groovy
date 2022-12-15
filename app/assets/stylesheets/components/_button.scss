@@ -7,10 +7,19 @@
   padding-top: 10px;
   padding-bottom: 10px;
   text-decoration: none;
-  color: white;
+  color: black;
   font-family: Arial, Helvetica, sans-serif;
   border: #FAC066;
   margin-left: -16px;
+
+  &:hover {
+    background-color: #e49e34;
+    color: black;
+  }
+}
+
+#btn-home {
+  margin-left: -0px;
 }
 
 .btn-retour {
