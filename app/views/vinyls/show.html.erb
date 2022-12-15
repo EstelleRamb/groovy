@@ -33,12 +33,12 @@
   <% if @users_vinyls.count == 1 %>
     <h3>Une personne possède ce vinyle</h3>
     <% elsif @users_vinyls.count > 1 %>
-    <h4><%=@users_vinyls.count%> personne possède ce vinyle</h4>
+    <h4><%=@users_vinyls.count%> personnes possèdent ce vinyle</h4>
   <% end %>
     <% @users_vinyls.each do |users_vinyl| %>
-      <div class="card card-want mb-3">
-        <div class="d-flex justify-content-space-around align-items-center p-1">
-          <%= image_tag "https://res.cloudinary.com/dvw6upciw/image/upload/v1670444837/avatar_e5p5i5.webp", :width=>60, :height=>60%>
+      <div class="card card-want m-2 mb-3 p-3" >
+        <div class="d-flex justify-content-space-around align-items-center p-3">
+          <%= image_tag "https://res.cloudinary.com/dvw6upciw/image/upload/v1670444837/avatar_e5p5i5.webp", :width=>50, :height=>50%>
           <p class= "px-2 m-0"><%= users_vinyl.user.first_name.capitalize %></p>
 
           <a><%= link_to 'Je le veux', new_users_vinyl_exchange_path(users_vinyl), class: "btn btn-info" %></a>
