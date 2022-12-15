@@ -1,55 +1,96 @@
+puts "destroy exchanges..."
+Exchange.update_all(offered_vinyl_id: nil)
+Exchange.destroy_all
+puts "done"
+puts "destroy offered_vinyl..."
+OfferedVinyl.destroy_all
+puts "done"
+puts "destroy collectionvinyl..."
+CollectionsVinyl.destroy_all
+puts "done"
+puts "destroy collection..."
+Collection.destroy_all
+puts "done"
+puts "destroy users_vinyl..."
+UsersVinyl.destroy_all
+puts "done"
+puts "destroy vinyl..."
+Vinyl.destroy_all
+puts "done"
+puts "destroy Message..."
+Message.destroy_all
+puts "done"
+puts "destroy user..."
+User.destroy_all
+puts "done"
+puts "destroy artist..."
+Artist.destroy_all
+puts "done"
+
 yaml_filepath = "#{File.dirname(__FILE__)}/seeds.yaml"
 seeds = YAML.load_file(yaml_filepath)
 
-p seeds
+# p seeds
 
-# seeds[:artists].each do |artist_seed|
-#   artist = Artist.create!(
-#     name: artist_seed[:name],
-#     description: artist_seed[:description]
-#   )
+vinyls = []
 
-#   artist_seed[:vinyls].each do |vinyl_seed|
-#     Vinyl.create!(
-#       title: vinyl_seed[:title],
-#       year: vinyl_seed[:year],
-#       photo_url: vinyl_seed[:photo_url],
-#       artist: artist
-#     )
-#   end
-# end
+seeds[:artists].each do |artist_seed|
+  artist = Artist.create!(
+    name: artist_seed[:name],
+    description: artist_seed[:description]
+  )
 
-# puts "destroy exchanges..."
-# Exchange.update_all(offered_vinyl_id: nil)
-# Exchange.destroy_all
-# puts "done"
-# puts "destroy offered_vinyl..."
-# OfferedVinyl.destroy_all
-# puts "done"
-# puts "destroy collectionvinyl..."
-# CollectionsVinyl.destroy_all
-# puts "done"
-# puts "destroy collection..."
-# Collection.destroy_all
-# puts "done"
-# puts "destroy users_vinyl..."
-# UsersVinyl.destroy_all
-# puts "done"
-# puts "destroy vinyl..."
-# Vinyl.destroy_all
-# puts "done"
-# puts "destroy Message..."
-# Message.destroy_all
-# puts "done"
-# puts "destroy user..."
-# User.destroy_all
-# puts "done"
-# puts "destroy artist..."
-# Artist.destroy_all
-# puts "done"
-# puts "destroy genre..."
-# Genre.destroy_all
-# puts "all done"
+  artist_seed[:vinyls].each do |vinyl_seed|
+    vinyls << Vinyl.create!(
+      title: vinyl_seed[:title],
+      year: vinyl_seed[:year],
+      photo_url: vinyl_seed[:photo_url],
+      artist: artist
+    )
+  end
+end
+
+seeds[:users].each do |user_seed|
+  first_name = user_seed[:first_name]
+  user = User.create!(
+    first_name: first_name,
+    last_name: user_seed[:last_name],
+    address: user_seed[:address],
+    email: "#{first_name}@gmail.com",
+    password: "123456",
+  )
+
+  collections = []
+  unless user_seed[:collections].nil?
+    user_seed[:collections].each do |collection|
+      collections << Collection.create!(
+        user: user,
+        name: collection[:name]
+      )
+    end
+  end
+
+  unless user_seed[:vinyls_mappings].nil?
+    user_seed[:vinyls_mappings].each do |vinyl_mapping|
+      album = vinyls.find { |vinyl| vinyl.title == vinyl_mapping[:title] }
+      user_vinyl = UsersVinyl.create!(
+        vinyl: album,
+        user: user,
+        offer_for_trade: vinyl_mapping[:offer_for_trade]
+      )
+
+      if vinyl_mapping[:collection]
+        collection = collections.find { |collection| collection.name == vinyl_mapping[:collection] }
+        CollectionsVinyl.create!(
+          collection: collection,
+          users_vinyl: user_vinyl
+        )
+      end
+    end
+  end
+end
+
+
 
 # print "creating users..."
 

@@ -6,9 +6,9 @@
       - :title: "Merry Christmas"
         :year: 1994
         :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
-      - :title: "Merry Christmas"
-        :year: 1994
-        :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
+      - :title: "Caution"
+        :year: 2018
+        :photo_url: "https://images.renaud-bray.com/images/PG/2633/2633140-gf.jpg?404=404RB.gif"
 
   - :name: "Pearl Jam"
     :description: "This is a test description."
@@ -16,3 +16,25 @@
       - :title: "Ten"
         :year: 2017
         :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
+
+:users:
+  - :first_name: "estelle"
+    :last_name: "rambur"
+    :address: "4436 belanger, Montréal"
+    :collections:
+      - :name: "rock"
+      - :name: "pop"
+    :vinyls_mappings:
+      - :title: "Merry Christmas"
+        :offer_for_trade: true
+        :collection: "pop"
+      - :title: "Ten"
+        :offer_for_trade: false
+        :collection: "rock"
+      - :title: "Caution"
+        :offer_for_trade: true
+        :collection: false
+
+  - :first_name: "yuhecny"
+    :last_name: "diaz"
+    :address: "5330 papineau, Montréal"
