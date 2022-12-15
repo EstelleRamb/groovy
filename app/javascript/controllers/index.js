@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BorderCardController from "./border_card_controller"
+application.register("border-card", BorderCardController)
+
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
@@ -16,8 +19,8 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import UserVinylController from "./user_vinyl_controller"
-application.register("user-vinyl", UserVinylController)
-
 import OngletController from "./onglet_controller"
 application.register("onglet", OngletController)
+
+import UserVinylController from "./user_vinyl_controller"
+application.register("user-vinyl", UserVinylController)
