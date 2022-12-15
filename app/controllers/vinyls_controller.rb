@@ -14,17 +14,14 @@ class VinylsController < ApplicationController
     @users_vinyls = @vinyl.users_vinyls
                           .available_for_trade
                           .without_user(current_user.id)
-    # collections = collections_vinyls.map do |collection_vinyl|
-    #   collection_vinyl.collection
-    # end
-    # users = collections_vinyls.map do |collection|
-    #   collection.user
-    # end
-    users = User.all
+    # users = @users_vinyls.map { |users_vinyl| users_vinyl.user }
+    users_id = @users_vinyls.map { |users_vinyl| users_vinyl.user_id }
+    users = User.where(id: users_id)
     @markers = users.geocoded.map do |user|
       {
         lat: user.latitude,
-        lng: user.longitude
+        lng: user.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { user: user })
       }
     end
   end
