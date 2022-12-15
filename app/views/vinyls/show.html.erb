@@ -20,7 +20,11 @@
 </div>
 
 <div class="container">
-  <h2 class="mb-5">Ces personnes ont ce vinyle</h2>
+  <% if @users_vinyls.count == 1 %>
+    <h3>Une personne possède ce vinyle</h3>
+    <% elsif @users_vinyls.count > 1 %>
+    <h4><%=@users_vinyls.count%> personne possède ce vinyle</h4>
+  <% end %>
     <% @users_vinyls.each do |users_vinyl| %>
       <div class="card card-user mb-3">
         <div class="d-flex justify-content-space-around align-items-center card-user">
