@@ -5,10 +5,20 @@
 
 <div class="container d-flex justify-content-evenly, align-items-center">
   <div class="container mt-5 mb-5">
-    <div class="card p-4 shadow" style="width: 400px;">
-      <img class="card-img-top"><%=image_tag(@vinyl.photo_url)%>
-      <h4 class="pt-3"><%= @vinyl.title %> (<%= @vinyl.year %>)</h4>
-      <p class=""><%= @vinyl.artist.name %></p>
+    <div class="card shadow">
+      <div>
+        <%= image_tag @vinyl.photo_url, class:"vinyl_image" unless @vinyl.photo_url.nil? %>
+      </div>
+      <div class="text px-4 pb-4 flex-fill">
+        <div class="vinyl-title">
+          <p class="fw-bold m-0">
+          <%= @vinyl.title %>
+          </p>
+        </div>
+        <p>
+          <%= @vinyl.artist.name %>, <em><%= @vinyl.year %></em>
+        </p>
+      </div>
     </div>
   </div>
 

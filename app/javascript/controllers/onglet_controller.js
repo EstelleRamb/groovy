@@ -8,6 +8,27 @@ export default class extends Controller {
     console.log("From connect");
   }
 
+  all(event){
+
+    event.preventDefault()
+    console.log("From all");
+    const cards = this.cardsTargets
+    const collections = this.collectionsTargets
+    const echanges = this.echangesTargets
+
+    cards.forEach((card) => {
+      card.classList.remove("d-none")
+    })
+    collections.forEach((collection) => {
+      collection.classList.add("d-none")
+    })
+    echanges.forEach((echange) => {
+      echange.classList.add("d-none")
+    })
+
+    this.allTarget.classList.add("tab")
+    this.collectionsTarget.classList.remove("tab")
+  }
 
   playlist(event){
 
@@ -28,29 +49,7 @@ export default class extends Controller {
     })
 
     this.allTarget.classList.remove("tab")
-    this.colectionTarget.classList.add("tab")
-  }
-
-  all(event){
-
-    event.preventDefault()
-    console.log("From all");
-    const cards = this.cardsTargets
-    const collections = this.collectionsTargets
-    const echanges = this.echangesTargets
-
-    cards.forEach((card) => {
-      card.classList.remove("d-none")
-    })
-    collections.forEach((collection) => {
-      collection.classList.add("d-none")
-    })
-    this.allTarget.classList.add("tab")
-    this.colectionTarget.classList.remove("tab")
-
-    echanges.forEach((echange) => {
-      echange.classList.add("d-none")
-    })
+    this.collectionsTarget.classList.add("tab")
   }
 
   echange(event){
@@ -72,8 +71,8 @@ export default class extends Controller {
       echange.classList.remove("d-none")
     })
 
-
-
+    this.allTarget.classList.remove("tab")
+    this.collectionsTarget.classList.add("tab")
   }
 
 }
