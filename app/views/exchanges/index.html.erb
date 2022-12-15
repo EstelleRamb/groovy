@@ -2,8 +2,9 @@
  <h2>Commence ton échange</h2>
 </div>
 <div class="container">
-<%= @exchages.present? %>
-  <%# <% if @exchages.present? %> %>
+
+  <%# if @exchages.present? %>
+
     <% @exchanges.each do |exchange| %>
       <div class="row d-flex justify-content-center my-5">
           <div class="col-3">
@@ -207,6 +208,9 @@
           <%= f.submit "Envoyer", class: "btn btn-info" %>
           <button type="button" class="btn cancel btn btn-info" onclick="closeForm()"­>fermer </button>
         <% end %>
+
+
+   
 
         <%# else %>
           <%# <h5 class="text-center mt-5">Désolé, Vous avez pas d'echange</h5> %>
