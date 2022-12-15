@@ -42,7 +42,9 @@
                     <div class="text-center">
                       <i class="fa-solid fa-rotate fleche-echange"></i>
                    </div>
-                    <%= link_to "Valider", complete_exchange_exchange_path(exchange), data: { turbo_method: :post } %>
+                    <%= link_to "Valider", complete_exchange_exchange_path(exchange), data: { turbo_method: :post }, class: "btn btn-info" %>
+
+
 
                 <% end %>
 
