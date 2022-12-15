@@ -21,17 +21,19 @@
 
           <div class="col-3 " style="height: 365px;">
             <div class="d-flex flex-column justify-content-evenly align-items-center h-100">
-              <p class="w-75 text-center m-0">Complète cet échange pour mettre à jour ta collection.</p>
-
-              <div class="text-center">
-                <i class="fa-solid fa-rotate fleche-echange"></i>
-              </div>
+              
+              
               <div class="d-flex flex-column align-items-center">
               <% if exchange.offered_vinyl_id.nil? %>
                <p>en attente</p>
                <% else %>
                   <% unless exchange.offered_vinyl.nil? %>
+                  <p class="w-75 text-center m-0">Complète cet échange pour mettre à jour ta collection.</p>
+                  <br>
                     <%= link_to complete_exchange_exchange_path(exchange), data: { turbo_method: :post } do %>
+                    <div class="text-center">
+                <i class="fa-solid fa-rotate fleche-echange"></i>
+              </div>
                     <button class= "btn btn-info mt-3">Valider</button>
                     <% end %>
                   <% end %>
