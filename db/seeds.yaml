@@ -1,0 +1,18 @@
+---
+:artists:
+  - :name: "Mariah Carey"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Merry Christmas"
+        :year: 1994
+        :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
+      - :title: "Merry Christmas"
+        :year: 1994
+        :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
+
+  - :name: "Pearl Jam"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Ten"
+        :year: 2017
+        :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
