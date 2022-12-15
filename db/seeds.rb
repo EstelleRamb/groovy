@@ -23,7 +23,7 @@ puts "done"
 puts "destroy user..."
 User.destroy_all
 puts "done"
-puts "destroy artist..."
+puts "destroy artist....."
 Artist.destroy_all
 puts "done"
 
