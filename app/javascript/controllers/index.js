@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import BorderCardController from "./border_card_controller"
-application.register("border-card", BorderCardController)
-
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
