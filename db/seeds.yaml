@@ -135,9 +135,9 @@
   - :name: "Claude François"
     :description: "This is a test description."
     :vinyls:
-      - :title: "Ten"
-        :year: 2017
-        :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
+      - :title: "Comme d'habitude"
+        :year: 1967
+        :photo_url: "https://images.renaud-bray.com/images/PG/2233/2233009-gf.jpg?404=404RB.gif"
 
   - :name: "Prince"
     :description: "This is a test description."
