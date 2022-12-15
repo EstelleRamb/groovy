@@ -1,11 +1,13 @@
 class VinylsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
+
+
     if params[:query].present?
       @vinyls = Vinyl.search_by_title_and_year(params[:query])
     else
       # page d'accueil vide
-      @vinyls = []
+      @vinyls = Vinyl.order("id DESC").all
     end
   end
 
