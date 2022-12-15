@@ -1,0 +1,184 @@
+---
+:artists:
+  - :name: "Mariah Carey"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Merry Christmas"
+        :year: 1994
+        :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
+      - :title: "Caution"
+        :year: 2018
+        :photo_url: "https://images.renaud-bray.com/images/PG/2633/2633140-gf.jpg?404=404RB.gif"
+      - :title: "The rarities"
+        :year: 2020
+        :photo_url: "https://images.renaud-bray.com/images/PG/3249/3249680-gf.jpg?404=404RB.gif"
+      - :title: "Me.I Am Mariah"
+        :year: 2021
+        :photo_url: "https://images.renaud-bray.com/images/PG/3327/3327364-gf.jpg?404=404RB.gif"
+
+  - :name: "Pink Floyd"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "The Dark side of the moon"
+        :year: 2016
+        :photo_url: "https://images.renaud-bray.com/images/PG/2106/2106257-gf.jpg?404=404RB.gif"
+      - :title: "The wall"
+        :year: 2016
+        :photo_url: "https://images.renaud-bray.com/images/PG/1879/1879280-gf.jpg?404=404RB.gif"
+      - :title: "Animals"
+        :year: 2018
+        :photo_url: "https://images.renaud-bray.com/images/PG/3778/3778972-gf.jpg?404=404RB.gif"
+      - :title: "Meddle"
+        :year: 2016
+        :photo_url: "https://images.renaud-bray.com/images/PG/2081/2081548-gf.jpg?404=404RB.gif"
+
+  - :name: "Queen"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "A Night At The Opera"
+        :year: 1975
+        :photo_url: "https://images.renaud-bray.com/images/PG/3774/3774599-gf.jpg?404=404RB.gif"
+      - :title: "Queen II"
+        :year: 1974
+        :photo_url: "https://images.renaud-bray.com/images/PG/3801/3801867-gf.jpg?404=404RB.gif"
+      - :title: "Queen"
+        :year: 1973
+        :photo_url: "https://images.renaud-bray.com/images/PG/3801/3801866-gf.jpg?404=404RB.gif"
+      - :title: "A day at the races"
+        :year: 1976
+        :photo_url: "https://images.renaud-bray.com/images/PG/3855/3855200-gf.jpg?404=404RB.gif"
+      - :title: "Sheer heart attack"
+        :year: 1974
+        :photo_url: "https://images.renaud-bray.com/images/PG/3853/3853356-gf.jpg?404=404RB.gif"
+
+  - :name: "Miles Davis"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Kind of blue"
+        :year: 2011
+        :photo_url: "https://images.renaud-bray.com/images/PG/1940/1940914-gf.jpg?404=404RB.gif"
+      - :title: "Round about Midnight"
+        :year: 1957
+        :photo_url: "https://images.renaud-bray.com/images/PG/1940/1940991-gf.jpg?404=404RB.gif"
+      - :title: "Milestones"
+        :year: 1958
+        :photo_url: "https://images.renaud-bray.com/images/PG/118/118959-gf.jpg?404=404RB.gif"
+
+  - :name: "Alain Bashung"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "En Amont"
+        :year: 2018
+        :photo_url: "https://images.renaud-bray.com/images/PG/2627/2627421-gf.jpg?404=404RB.gif"
+      - :title: "Osez Josephine"
+        :year: 1991
+        :photo_url: "https://images.renaud-bray.com/images/PG/3556/3556987-gf.jpg?404=404RB.gif"
+      - :title: "Live 81"
+        :year: 1981
+        :photo_url: "https://images.renaud-bray.com/images/PG/3632/3632110-gf.jpg?404=404RB.gif"
+      - :title: "En studio"
+        :year: 2022
+        :photo_url: "https://images.renaud-bray.com/images/PG/3799/3799129-gf.jpg?404=404RB.gif"
+      - :title: "Fantaisie Militaire"
+        :year: 1998
+        :photo_url: "https://images.renaud-bray.com/images/PG/1713/1713722-gf.jpg?404=404RB.gif"
+
+  - :name: "Beatles"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Abbey road"
+        :year: 1969
+        :photo_url: "https://images.renaud-bray.com/images/PG/2918/2918391-gf.jpg?404=404RB.gif"
+      - :title: "Revolver"
+        :year: 1966
+        :photo_url: "https://images.renaud-bray.com/images/PG/3799/3799105-gf.jpg?404=404RB.gif"
+      - :title: "Let it be"
+        :year: 1970
+        :photo_url: "https://images.renaud-bray.com/images/PG/3532/3532058-gf.jpg?404=404RB.gif"
+      - :title: "A hard days night"
+        :year: 1964
+        :photo_url: "https://images.renaud-bray.com/images/PG/1322/1322788-gf.jpg?404=404RB.gif"
+
+  - :name: "Scott Travis"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Rodeo"
+        :year: 2015
+        :photo_url: "https://images.renaud-bray.com/images/PG/1788/1788185-gf.jpg?404=404RB.gif"
+      - :title: "Bird in the trap sing McKnight"
+        :year: 2016
+        :photo_url: "https://images.renaud-bray.com/images/PG/2119/2119902-gf.jpg?404=404RB.gif"
+      - :title: "Astroworld"
+        :year: 2018
+        :photo_url: "https://images.renaud-bray.com/images/PG/2607/2607017-gf.jpg?404=404RB.gif"
+
+  - :name: "Kendrick Lamar"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Mr. Moral & the big steppers"
+        :year: 2022
+        :photo_url: "https://images.renaud-bray.com/images/PG/3753/3753046-gf.jpg?404=404RB.gif"
+      - :title: "Good kid, M.A.A.D city"
+        :year: 2013
+        :photo_url: "https://images.renaud-bray.com/images/PG/1390/1390281-gf.jpg?404=404RB.gif"
+      - :title: "To pimp a butterfly"
+        :year: 2015
+        :photo_url: "https://images.renaud-bray.com/images/PG/1705/1705771-gf.jpg?404=404RB.gif"
+
+  - :name: "Pearl Jam"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Ten"
+        :year: 2017
+        :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
+
+  - :name: "Claude François"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Ten"
+        :year: 2017
+        :photo_url: "https://images.renaud-bray.com/images/PG/2987/2987878-gf.jpg?404=404RB.gif"
+
+  - :name: "Prince"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Purple Rain"
+        :year: 1990
+        :photo_url: "https://images.renaud-bray.com/images/PG/2247/2247926-gf.jpg?404=404RB.gif"
+      - :title: "Sign O The times"
+        :year: 1987
+        :photo_url: "https://images.renaud-bray.com/images/PG/3243/3243790-gf.jpg?404=404RB.gif"
+
+:users:
+  - :first_name: "michelle"
+    :last_name: "mabelle"
+    :address: "5335 avenue casgrain, Montréal"
+    :collections:
+      - :name: "rock"
+      - :name: "pop"
+    :vinyls_mappings:
+      - :title: "Merry Christmas"
+        :offer_for_trade: true
+        :collection: "pop"
+      - :title: "Ten"
+        :offer_for_trade: false
+        :collection: "rock"
+      - :title: "Caution"
+        :offer_for_trade: true
+        :collection: false
+
+  - :first_name: "yuhecny"
+    :last_name: "diaz"
+    :address: "5330 papineau, Montréal"
+
+  - :first_name: "edgar"
+    :last_name: "quenum"
+    :address: "5330 papineau, Montréal"
+
+  - :first_name: "concorde"
+    :last_name: "nzeyimana"
+    :address: "5378 boulevard saint laurent, Montréal"
+
+  - :first_name: "estelle"
+    :last_name: "rambur"
+    :address: "4663 rue saint urbain, Montréal"
