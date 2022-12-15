@@ -170,15 +170,87 @@
   - :first_name: "yuhecny"
     :last_name: "diaz"
     :address: "5330 papineau, Montréal"
+    :collections:
+      - :name: "Rock"
+    :vinyls_mappings:
+      - :title: "Milestones"
+        :offer_for_trade: true
+        :collection: false
+      - :title: "Merry Christmas"
+        :offer_for_trade: true
+        :collection: false
+      - :title: "Sign O The times"
+        :offer_for_trade: true
+        :collection: false
 
   - :first_name: "edgar"
     :last_name: "quenum"
     :address: "5330 papineau, Montréal"
+    :collections:
+      - :name: "Rock"
+      - :name: "Pop"
+      - :name: "Rap"
+      - :name: "Variété"
+    :vinyls_mappings:
+      - :title: "Purple Rain"
+        :offer_for_trade: false
+        :collection: "pop"
+      - :title: "Me.I Am Mariah"
+        :offer_for_trade: false
+        :collection: "pop"
+      - :title: "Comme d'habitude"
+        :offer_for_trade: true
+        :collection: "Variété"
+      - :title: "Osez Josephine"
+        :offer_for_trade: true
+        :collection: "Variété"
+      - :title: "Bird in the trap sing McKnight"
+        :offer_for_trade: false
+        :collection: "Rap"
+      - :title: "Good kid, M.A.A.D city"
+        :offer_for_trade: false
+        :collection: "Rap"
+      - :title: "Animals"
+        :offer_for_trade: true
+        :collection: "Rock"
+      - :title: "Ten"
+        :offer_for_trade: false
+        :collection: "Rock"
 
   - :first_name: "concorde"
     :last_name: "nzeyimana"
     :address: "5378 boulevard saint laurent, Montréal"
+     :collections:
+      - :name: "Rock"
+    :vinyls_mappings:
+      - :title: "A Night At The Opera"
+        :offer_for_trade: true
+        :collection: false
+      - :title: "Merry Christmas"
+        :offer_for_trade: true
+        :collection: false
+      - :title: "Sign O The times"
+        :offer_for_trade: true
+        :collection: false
+      - :title: "The rarities"
+        :offer_for_trade: true
+        :collection: false
 
   - :first_name: "estelle"
     :last_name: "rambur"
     :address: "4663 rue saint urbain, Montréal"
+     :collections:
+      - :name: "Rock"
+    :vinyls_mappings:
+      - :title: "A Night At The Opera"
+        :offer_for_trade: true
+        :collection: false
+      - :title: "Merry Christmas"
+        :offer_for_trade: true
+        :collection: false
+      - :title: "Sign O The times"
+        :offer_for_trade: true
+        :collection: false
+      - :title: "The rarities"
+        :offer_for_trade: true
+        :collection: false

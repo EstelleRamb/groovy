@@ -4,7 +4,7 @@
   <ul class="dropdown-menu form-style">
     <%= simple_form_for([user_vinyl, @collections_vinyl]) do |f| %>
       <%=f.input :collection_id, as: :radio_buttons, collection: @collections_select, label: ""%>
-      <%= f.submit class: "form-style", value: "Valider"%>
+      <%= f.submit class: "form-style btn btn-info", value: "Valider"%>
     <% end %>
 
   </ul>
