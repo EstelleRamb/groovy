@@ -16,18 +16,19 @@
         <div class="col">
           <div class="card shadow p-3">
             <label>
-              <img><%= image_tag users_vinyl.vinyl.photo_url, class:"card-img-top p-3 " %>
-              <h5 class="card-title"><%= users_vinyl.vinyl.title%> <%= users_vinyl.vinyl.year %></h5>
-              <p class="description"><%=users_vinyl.vinyl.artist.name%></p>
-              <input type="checkbox" name="collection_vinyl_ids[]" value="<%= users_vinyl.id %>">
-
+              <img><%= image_tag users_vinyl.vinyl.photo_url, class:"card-img-top p-2 " %>
+              <div class="ps-2">
+                <h5 class="card-title"><%= users_vinyl.vinyl.title%></h5>
+                <p class="description"><%=users_vinyl.vinyl.artist.name%>,<%= users_vinyl.vinyl.year %></p>
+                <input type="checkbox" name="collection_vinyl_ids[]" value="<%= users_vinyl.id %>">
+              </div>
             </label>
           </div>
         </div>
       <% end %>
     </div>
     <div class="form-actions">
-      <%= v.button :submit, class: "btn btn-info", value: "Valider" %>
+      <%= v.button :submit, class: "btn btn-info mt-5 px-3", value: "Valider" %>
     </div>
   <% end %>
   </div>
