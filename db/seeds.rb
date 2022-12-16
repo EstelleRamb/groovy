@@ -57,16 +57,24 @@ seeds[:users].each do |user_seed|
     last_name: user_seed[:last_name],
     address: user_seed[:address],
     email: "#{first_name}@gmail.com",
-    password: "123456",
+    password: "123456"
   )
 
   collections = []
   unless user_seed[:collections].nil?
-    user_seed[:collections].each do |collection|
-      collections << Collection.create!(
+    user_seed[:collections].each do |collection_seed|
+      collection = Collection.new(
         user: user,
-        name: collection[:name]
+        name: collection_seed[:name]
       )
+
+      unless collection_seed[:picture_url].nil?
+        picture = URI.open(collection_seed[:picture_url])
+        collection.photo.attach(io: picture, filename: "#{collection.name}_photo", content_type: "image/png")
+      end
+
+      collection.save!
+      collections << collection
     end
   end
 
