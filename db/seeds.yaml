@@ -201,9 +201,11 @@
     :address: "5330 papineau, Montréal"
     :collections:
       - :name: "Rock"
+        :picture_url: "https://images.pexels.com/photos/144428/pexels-photo-144428.jpeg"
       - :name: "Pop"
-      - :name: "Rap"
+        :picture_url: "https://images.pexels.com/photos/811838/pexels-photo-811838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       - :name: "Variété"
+        :picture_url: "https://www.inlingua-larochelle.com/wp-content/uploads/2020/03/chanson-fran%C3%A7aise-500x321.jpg"
     :vinyls_mappings:
       - :title: "Purple Rain"
         :offer_for_trade: false
@@ -219,10 +221,10 @@
         :collection: "Variété"
       - :title: "Bird in the trap sing McKnight"
         :offer_for_trade: false
-        :collection: "Rap"
+        :collection:
       - :title: "Good kid, M.A.A.D city"
         :offer_for_trade: false
-        :collection: "Rap"
+        :collection:
       - :title: "Ten"
         :offer_for_trade: false
         :collection: "Rock"
