@@ -228,6 +228,9 @@
       - :title: "Ten"
         :offer_for_trade: false
         :collection: "Rock"
+      - :title: "Hotter than july"
+        :offer_for_trade: true
+        :collection: "Pop"
 
   - :first_name: "concorde"
     :last_name: "nzeyimana"
