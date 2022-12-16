@@ -112,6 +112,19 @@
         :year: 2018
         :photo_url: "https://images.renaud-bray.com/images/PG/2607/2607017-gf.jpg?404=404RB.gif"
 
+  - :name: "Stevie Wonder"
+    :description: "This is a test description."
+    :vinyls:
+      - :title: "Hotter than july"
+        :year: 1980
+        :photo_url: "https://images.renaud-bray.com/images/PG/2195/2195860-gf.jpg?404=404RB.gif"
+      - :title: "Talking book"
+        :year: 1972
+        :photo_url: "https://images.renaud-bray.com/images/PG/2117/2117529-gf.jpg?404=404RB.gif"
+      - :title: "Someday at Christmas"
+        :year: 2015
+        :photo_url: "https://images.renaud-bray.com/images/PG/1823/1823346-gf.jpg?404=404RB.gif"
+
   - :name: "Kendrick Lamar"
     :description: "This is a test description."
     :vinyls:
@@ -210,9 +223,6 @@
       - :title: "Good kid, M.A.A.D city"
         :offer_for_trade: false
         :collection: "Rap"
-      - :title: "Animals"
-        :offer_for_trade: true
-        :collection: "Rock"
       - :title: "Ten"
         :offer_for_trade: false
         :collection: "Rock"
