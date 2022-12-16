@@ -28,18 +28,18 @@
     <div class="d-flex flex-column justify-content-evenly align-items-center h-100">
       <div class="d-flex flex-column align-items-center">
         <% if exchange.offered_vinyl_id.nil? %>
-          <p class="w-100text-center m-0">En attente.</p>
+          <p class="w-100text-center m-0">En attente</p>
           <br>
             <div class="text-center">
               <i class="fa-solid fa-rotate fleche-echange"></i>
             </div>
         <% else %>
-          <p class="w-75 text-center m-0">Complète cet échange pour mettre à jour ta collection.</p>
+          <p class="w-75 text-center m-0">Valide cet échange pour mettre à jour ta collection</p>
           <br>
             <div class="text-center">
               <i class="fa-solid fa-rotate fleche-echange"></i>
             </div>
-            <%= link_to "Valider", complete_exchange_exchange_path(exchange), data: { turbo_method: :post }, class: "btn btn-info" %>
+            <%= link_to "Valider", complete_exchange_exchange_path(exchange), data: { turbo_method: :post }, class: "btn btn-info mt-3" %>
         <% end %>
         <button class="openChatBtn btn-chat" onclick="openForm()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
@@ -129,7 +129,7 @@
       <%end%>
     </div>
 
-    <h2>Voici les échanges proposés</h2>
+    <%# <h2>Voici les échanges proposés</h2> %>
       <% @incoming_exchanges.each do |incoming_exchange| %>
         <%= simple_form_for(incoming_exchange, data: { turbolinks: false }) do |f| %>
           <p>Veuillez selectionner un vinyl</p>
@@ -155,8 +155,8 @@
           data-exchange-subscription-exchange-id-value="<%= @exchange.id %>"
           data-exchange-subscription-current-user-id-value="<%= current_user.id %>"
         >
-        <div class ="openChat">
-          <h1><%= @exchange.user.first_name != current_user.first_name ? @exchange.user.first_name : @exchange.requested_vinyl.user.first_name.capitalize %></h1>
+        <div class ="openChat p-3">
+          <h2><%= @exchange.user.first_name != current_user.first_name ? @exchange.user.first_name : @exchange.requested_vinyl.user.first_name.capitalize %></h2>
             <div class="messages"
               id="myForm"
               data-exchange-subscription-target="messages">
